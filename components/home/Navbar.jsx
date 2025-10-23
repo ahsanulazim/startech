@@ -3,6 +3,7 @@ import Drawer from "./Drawer";
 import Search from "../ui/Search";
 import { FaFireAlt, FaSearch, FaShoppingBasket, FaSmile, FaUser } from "react-icons/fa";
 import Profile from "../ui/Profile";
+import Menu from "./Menu";
 
 export default function Navbar() {
 
@@ -26,9 +27,6 @@ export default function Navbar() {
                             </label>
                         </div>
                         <Link href="/" className=""><img className="w-full min-w-20 max-w-28" src="/startech.svg" alt="startech" /></Link>
-                        {/* <div className="navbar-center lg:hidden flex">
-                            <Link href="/"><img className="w-full max-w-28" src="/startech.svg" alt="startech" /></Link>
-                        </div> */}
                         <div className="navbar-center hidden lg:flex grow">
                             <Search />
                         </div>
@@ -46,6 +44,7 @@ export default function Navbar() {
                         </div>
                     </div>
                 </header>
+                <Menu />
             </div>
             <Drawer />
         </div>

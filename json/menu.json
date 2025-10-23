@@ -1,0 +1,244 @@
+[
+  {
+    "id": 1,
+    "name": "Desktop",
+    "href": "#",
+    "submenu": [
+      { "id": 1, "name": "Gaming Desktop", "href": "#" },
+      { "id": 2, "name": "Workstation", "href": "#" },
+      { "id": 3, "name": "Mini PC", "href": "#" },
+      { "id": 4, "name": "All-in-One", "href": "#" },
+      { "id": 5, "name": "Tower PC", "href": "#" }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Laptop",
+    "href": "#",
+    "submenu": [
+      { "id": 1, "name": "Ultrabook", "href": "#" },
+      { "id": 2, "name": "Gaming Laptop", "href": "#" },
+      { "id": 3, "name": "Business Laptop", "href": "#" },
+      { "id": 4, "name": "Student Laptop", "href": "#" },
+      { "id": 5, "name": "2-in-1 Convertible", "href": "#" },
+      { "id": 6, "name": "MacBook", "href": "#" }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Component",
+    "href": "#",
+    "submenu": [
+      { "id": 1, "name": "CPU", "href": "#" },
+      { "id": 2, "name": "GPU", "href": "#" },
+      { "id": 3, "name": "Motherboard", "href": "#" },
+      { "id": 4, "name": "RAM", "href": "#" },
+      { "id": 5, "name": "SSD", "href": "#" },
+      { "id": 6, "name": "Power Supply", "href": "#" },
+      { "id": 7, "name": "Cooling System", "href": "#" }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Monitor",
+    "href": "#",
+    "submenu": [
+      { "id": 1, "name": "Gaming Monitor", "href": "#" },
+      { "id": 2, "name": "4K Monitor", "href": "#" },
+      { "id": 3, "name": "Curved Monitor", "href": "#" },
+      { "id": 4, "name": "Touchscreen Monitor", "href": "#" },
+      { "id": 5, "name": "Portable Monitor", "href": "#" }
+    ]
+  },
+  {
+    "id": 5,
+    "name": "Power",
+    "href": "#",
+    "submenu": [
+      { "id": 1, "name": "UPS", "href": "#" },
+      { "id": 2, "name": "Power Bank", "href": "#" },
+      { "id": 3, "name": "Surge Protector", "href": "#" },
+      { "id": 4, "name": "Charging Station", "href": "#" },
+      { "id": 5, "name": "Battery Pack", "href": "#" }
+    ]
+  },
+  {
+    "id": 6,
+    "name": "Phone",
+    "href": "#",
+    "submenu": [
+      { "id": 1, "name": "Smartphone", "href": "#" },
+      { "id": 2, "name": "Feature Phone", "href": "#" },
+      { "id": 3, "name": "Android", "href": "#" },
+      { "id": 4, "name": "iPhone", "href": "#" },
+      { "id": 5, "name": "Foldable Phone", "href": "#" },
+      { "id": 6, "name": "Gaming Phone", "href": "#" }
+    ]
+  },
+  {
+    "id": 7,
+    "name": "Tablet",
+    "href": "#",
+    "submenu": [
+      { "id": 1, "name": "Android Tablet", "href": "#" },
+      { "id": 2, "name": "iPad", "href": "#" },
+      { "id": 3, "name": "Windows Tablet", "href": "#" },
+      { "id": 4, "name": "Drawing Tablet", "href": "#" },
+      { "id": 5, "name": "Kids Tablet", "href": "#" }
+    ]
+  },
+  {
+    "id": 8,
+    "name": "Office Equipment",
+    "href": "#",
+    "submenu": [
+      { "id": 1, "name": "Printer", "href": "#" },
+      { "id": 2, "name": "Scanner", "href": "#" },
+      { "id": 3, "name": "Projector", "href": "#" },
+      { "id": 4, "name": "Shredder", "href": "#" },
+      { "id": 5, "name": "Laminator", "href": "#" },
+      { "id": 6, "name": "Fax Machine", "href": "#" }
+    ]
+  },
+  {
+    "id": 9,
+    "name": "Camera",
+    "href": "#",
+    "submenu": [
+      { "id": 1, "name": "DSLR", "href": "#" },
+      { "id": 2, "name": "Mirrorless", "href": "#" },
+      { "id": 3, "name": "Action Camera", "href": "#" },
+      { "id": 4, "name": "Webcam", "href": "#" },
+      { "id": 5, "name": "Camcorder", "href": "#" }
+    ]
+  },
+  {
+    "id": 10,
+    "name": "Security",
+    "href": "#",
+    "submenu": [
+      { "id": 1, "name": "CCTV", "href": "#" },
+      { "id": 2, "name": "Smart Lock", "href": "#" },
+      { "id": 3, "name": "Alarm System", "href": "#" },
+      { "id": 4, "name": "Video Doorbell", "href": "#" },
+      { "id": 5, "name": "Motion Sensor", "href": "#" }
+    ]
+  },
+  {
+    "id": 11,
+    "name": "Networking",
+    "href": "#",
+    "submenu": [
+      { "id": 1, "name": "Router", "href": "#" },
+      { "id": 2, "name": "Modem", "href": "#" },
+      { "id": 3, "name": "Switch", "href": "#" },
+      { "id": 4, "name": "Access Point", "href": "#" },
+      { "id": 5, "name": "Network Adapter", "href": "#" }
+    ]
+  },
+  {
+    "id": 12,
+    "name": "Software",
+    "href": "#",
+    "submenu": [
+      { "id": 1, "name": "Operating System", "href": "#" },
+      { "id": 2, "name": "Office Suite", "href": "#" },
+      { "id": 3, "name": "Antivirus", "href": "#" },
+      { "id": 4, "name": "Design Tools", "href": "#" },
+      { "id": 5, "name": "Development Tools", "href": "#" }
+    ]
+  },
+  {
+    "id": 13,
+    "name": "Server & Storage",
+    "href": "#",
+    "submenu": [
+      { "id": 1, "name": "NAS", "href": "#" },
+      { "id": 2, "name": "Server Rack", "href": "#" },
+      { "id": 3, "name": "Cloud Storage", "href": "#" },
+      { "id": 4, "name": "External HDD", "href": "#" },
+      { "id": 5, "name": "Backup Solutions", "href": "#" }
+    ]
+  },
+  {
+    "id": 14,
+    "name": "Accessories",
+    "href": "#",
+    "submenu": [
+      { "id": 1, "name": "Mouse", "href": "#" },
+      { "id": 2, "name": "Keyboard", "href": "#" },
+      { "id": 3, "name": "Headphones", "href": "#" },
+      { "id": 4, "name": "Webcam", "href": "#" },
+      { "id": 5, "name": "Microphone", "href": "#" }
+    ]
+  },
+  {
+    "id": 15,
+    "name": "Gadget",
+    "href": "#",
+    "submenu": [
+      { "id": 1, "name": "Smartwatch", "href": "#" },
+      { "id": 2, "name": "Fitness Tracker", "href": "#" },
+      { "id": 3, "name": "VR Headset", "href": "#" },
+      { "id": 4, "name": "Smart Glasses", "href": "#" },
+      { "id": 5, "name": "Digital Pen", "href": "#" },
+      { "id": 6, "name": "Smart Ring", "href": "#" },
+      { "id": 7, "name": "Portable Translator", "href": "#" },
+      { "id": 8, "name": "Smart Wallet", "href": "#" }
+    ]
+  },
+  {
+    "id": 16,
+    "name": "Gaming",
+    "href": "#",
+    "submenu": [
+      { "id": 1, "name": "Gaming Console", "href": "#" },
+      { "id": 2, "name": "Gaming PC", "href": "#" },
+      { "id": 3, "name": "Gamepad", "href": "#" },
+      { "id": 4, "name": "Gaming Chair", "href": "#" },
+      { "id": 5, "name": "VR Gaming", "href": "#" },
+      { "id": 6, "name": "Gaming Monitor", "href": "#" },
+      { "id": 7, "name": "Streaming Gear", "href": "#" },
+      { "id": 8, "name": "Gaming Keyboard", "href": "#" },
+      { "id": 9, "name": "Gaming Mouse", "href": "#" },
+      { "id": 10, "name": "Gaming Headset", "href": "#" }
+    ]
+  },
+  {
+    "id": 17,
+    "name": "TV",
+    "href": "#",
+    "submenu": [
+      { "id": 1, "name": "Smart TV", "href": "#" },
+      { "id": 2, "name": "LED TV", "href": "#" },
+      { "id": 3, "name": "OLED TV", "href": "#" },
+      { "id": 4, "name": "QLED TV", "href": "#" },
+      { "id": 5, "name": "4K TV", "href": "#" },
+      { "id": 6, "name": "8K TV", "href": "#" },
+      { "id": 7, "name": "Android TV", "href": "#" },
+      { "id": 8, "name": "TV Accessories", "href": "#" }
+    ]
+  },
+  {
+    "id": 18,
+    "name": "Appliance",
+    "href": "#",
+    "submenu": [
+      { "id": 1, "name": "Refrigerator", "href": "#" },
+      { "id": 2, "name": "Washing Machine", "href": "#" },
+      { "id": 3, "name": "Microwave Oven", "href": "#" },
+      { "id": 4, "name": "Air Conditioner", "href": "#" },
+      { "id": 5, "name": "Water Purifier", "href": "#" },
+      { "id": 6, "name": "Dishwasher", "href": "#" },
+      { "id": 7, "name": "Vacuum Cleaner", "href": "#" },
+      { "id": 8, "name": "Electric Kettle", "href": "#" },
+      { "id": 9, "name": "Induction Cooktop", "href": "#" },
+      { "id": 10, "name": "Room Heater", "href": "#" },
+      { "id": 11, "name": "Ceiling Fan", "href": "#" },
+      { "id": 12, "name": "Blender", "href": "#" },
+      { "id": 13, "name": "Toaster", "href": "#" },
+      { "id": 14, "name": "Iron", "href": "#" },
+      { "id": 15, "name": "Food Processor", "href": "#" }
+    ]
+  }
+]

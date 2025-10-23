@@ -26,6 +26,10 @@
   box-shadow: none;
 }
 
+.animatedBtn:hover {
+  color: var(--color-main);
+}
+
 @keyframes gradientbg {
   0% {
     background-position: 0 50%;
