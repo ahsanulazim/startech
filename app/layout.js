@@ -5,6 +5,9 @@ import Footer from "@/components/home/Footer";
 import Fab from "@/components/ui/Fab";
 import { FaShoppingBasket } from "react-icons/fa";
 import { MdLibraryAdd } from "react-icons/md";
+import Cart from "@/components/shop/Cart";
+import CartDrawer from "@/components/shop/CartDrawer";
+import Compare from "@/components/shop/Compare";
 
 const interTight = Inter_Tight({
   variable: "--font-inter-tight",
@@ -18,6 +21,7 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+
   return (
     <html lang="en">
       <body
@@ -25,8 +29,12 @@ export default function RootLayout({ children }) {
       >
         <Navbar />
         {children}
-        <Fab icon={<FaShoppingBasket />} />
-        <Fab bottom={"bottom-20"} icon={<MdLibraryAdd />} />
+        <Fab bottom={"bottom-20"}>
+          <Compare />
+        </Fab>
+        <Fab>
+          <CartDrawer />
+        </Fab>
         <Footer />
       </body>
     </html>

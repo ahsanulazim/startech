@@ -1,5 +1,7 @@
 import Pill from "../ui/Pill";
 import { FaLocationDot, FaPhone } from "react-icons/fa6";
+import AppDownload from "./AppDownload";
+import Copyright from "./Copyright";
 
 export default function Footer() {
 
@@ -39,6 +41,10 @@ export default function Footer() {
                     <p><span className="text-xs opacity-60">Email:</span><br /><a href="mailto:webteam@startechbd.com" className="text-xs text-accent">webteam@startechbd.com</a> </p>
                 </nav>
 
+            </div>
+            <div className="max-w-xxl mx-auto px-3">
+                <AppDownload />
+                <Copyright />
             </div>
         </footer>
     )
