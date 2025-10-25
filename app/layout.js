@@ -4,8 +4,6 @@ import Navbar from "@/components/home/Navbar";
 import Footer from "@/components/home/Footer";
 import Fab from "@/components/ui/Fab";
 import { FaShoppingBasket } from "react-icons/fa";
-import { MdLibraryAdd } from "react-icons/md";
-import Cart from "@/components/shop/Cart";
 import CartDrawer from "@/components/shop/CartDrawer";
 import Compare from "@/components/shop/Compare";
 
@@ -29,11 +27,12 @@ export default function RootLayout({ children }) {
       >
         <Navbar />
         {children}
+        <CartDrawer />
         <Fab bottom={"bottom-20"}>
           <Compare />
         </Fab>
         <Fab>
-          <CartDrawer />
+          <label htmlFor="my-drawer-5" className="drawer-button btn btn-lg btn-square btn-primary shadow-main/60 border-white/20 bg-main shadow-md"><FaShoppingBasket /></label>
         </Fab>
         <Footer />
       </body>

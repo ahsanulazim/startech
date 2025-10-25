@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "name": "Laptop Finder",
+    "sub": "Find Your Laptop Easily",
+    "href": "#",
+    "icon": "laptop"
+  },
+  {
+   "id": 2,
+    "name": "Raise a Complaint",
+    "sub": "Share Your Experience",
+    "href": "#",
+    "icon": "complaint"
+  },
+  {
+   "id": 3,
+    "name": "Home Service",
+    "sub": "Get Expert Help",
+    "href": "#",
+    "icon": "home"
+  },
+  {
+   "id": 4,
+    "name": "Servicing Center",
+    "sub": "Repair Your Device",
+    "href": "#",
+    "icon": "gear"
+  }
+]

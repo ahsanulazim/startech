@@ -39,7 +39,7 @@ export default function Navbar() {
                             <Link href="#" className="hidden lg:block ml-5"><button className="btn animatedBtn">PC Builder</button></Link>
                             <div className="join lg:hidden text-white gap-x-5">
                                 <button><FaSearch /></button>
-                                <button className="text-xl"><FaShoppingBasket /></button>
+                                <label htmlFor="my-drawer-5" className="drawer-button text-xl"><FaShoppingBasket /></label>
                             </div>
                         </div>
                     </div>

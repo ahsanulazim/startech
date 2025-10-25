@@ -6,6 +6,7 @@
 
 :root {
   --max-width: 1320px;
+  --page-has-backdrop: 0;
 }
 
 @theme inline {
@@ -15,7 +16,6 @@
   --color-main: hsl(206, 61%, 8%);
   --color-accent: hsl(11, 86%, 54%);
   --container-xxl: var(--max-width);
-
 }
 
 .animatedBtn {
