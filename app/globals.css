@@ -13,6 +13,7 @@
   --font-inter: var(--font-inter-tight);
   --breakpoint-xxl: 82.5rem;
   --breakpoint-xs: 30rem;
+  --breakpoint-2xs: 20rem;
   --color-main: hsl(206, 61%, 8%);
   --color-accent: hsl(11, 86%, 54%);
   --container-xxl: var(--max-width);

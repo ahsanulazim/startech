@@ -1,0 +1,98 @@
+[
+  {
+    "id": 0,
+    "name": "Starlink",
+    "href": "#",
+    "icon": "/featured/starlink-48x48.png"
+  },
+  {
+   "id": 1,
+    "name": "Drone",
+    "href": "#",
+    "icon": "/featured/drone-48x48.png"
+  },
+  {
+   "id": 2,
+    "name": "Gimbal",
+    "href": "#",
+    "icon": "/featured/gimbal-48x48.png"
+  },
+  {
+   "id": 3,
+    "name": "Tablet PC",
+    "href": "#",
+    "icon": "/featured/tablet-48x48.png"
+  },
+  {
+   "id": 4,
+    "name": "TV",
+    "href": "#",
+    "icon": "/featured/tv-48x48.png"
+  },
+  {
+   "id": 5,
+    "name": "Mobile",
+    "href": "#",
+    "icon": "/featured/mobile-phone-48x48.png"
+  },
+  {
+   "id": 6,
+    "name": "Accessories",
+    "href": "#",
+    "icon": "/featured/mobile-phone-accessories-48x48.png"
+  },
+  {
+   "id": 7,
+    "name": "Portable SSD",
+    "href": "#",
+    "icon": "/featured/portable-ssd-48x48.png"
+  },
+  {
+   "id": 8,
+    "name": "WiFi Camera",
+    "href": "#",
+    "icon": "/featured/portable-ip-camera-48x48.png"
+  },
+  {
+   "id": 9,
+    "name": "Trimmer",
+    "href": "#",
+    "icon": "/featured/trimmer-48x48.png"
+  },
+  {
+   "id": 10,
+    "name": "Smart Watch",
+    "href": "#",
+    "icon": "/featured/smart-watch-48x48.png"
+  },
+  {
+   "id": 11,
+    "name": "Action Camera",
+    "href": "#",
+    "icon": "/featured/action-camera-48x48.png"
+  },
+  {
+   "id": 12,
+    "name": "Earphone",
+    "href": "#",
+    "icon": "/featured/earphone-48x48.png"
+  },
+  {
+   "id": 13,
+    "name": "Earbuds",
+    "href": "#",
+    "icon": "/featured/earbuds-48x48.png"
+  },
+  {
+   "id": 14,
+    "name": "Bluetooth Speakers",
+    "href": "#",
+    "icon": "/featured/bt-speaker-48x48.png"
+  },
+  {
+   "id": 15,
+    "name": "Gaming Console",
+    "href": "#",
+    "icon": "/featured/gaming-console-48x48.png"
+  }
+]
