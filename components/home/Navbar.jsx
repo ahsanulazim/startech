@@ -1,52 +1,113 @@
 import Link from "next/link";
 import Drawer from "./Drawer";
 import Search from "../ui/Search";
-import { FaFireAlt, FaSearch, FaShoppingBasket, FaSmile, FaUser } from "react-icons/fa";
+import {
+  FaFireAlt,
+  FaSearch,
+  FaShoppingBasket,
+  FaSmile,
+  FaUser,
+} from "react-icons/fa";
 import Profile from "../ui/Profile";
 import Menu from "./Menu";
+import Footer from "./Footer";
 
-export default function Navbar() {
+export default function Navbar({ children }) {
+  const impLinks = [
+    {
+      id: 1,
+      title: "Offers",
+      subtitle: "Latest Deals",
+      href: "#",
+      icon: <FaFireAlt />,
+    },
+    {
+      id: 2,
+      title: "Happy Hours",
+      subtitle: "Special Deals",
+      href: "#",
+      icon: <FaSmile />,
+    },
+    {
+      id: 3,
+      title: "Account",
+      subtitle: "Login or Register",
+      href: "#",
+      icon: <FaUser />,
+    },
+  ];
 
-    const impLinks = [
-        { id: 1, title: "Offers", subtitle: "Latest Deals", href: "#", icon: <FaFireAlt /> },
-        { id: 2, title: "Happy Hours", subtitle: "Special Deals", href: "#", icon: <FaSmile /> },
-        { id: 3, title: "Account", subtitle: "Login or Register", href: "#", icon: <FaUser /> },
-    ];
-
-    return (
-        <div className="drawer">
-            <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-            <div className="drawer-content flex flex-col">
-                {/* Navbar */}
-                <header className=" bg-main">
-                    <div className="navbar max-w-xxl mx-auto gap-x-5">
-                        <div className="w-1/2 lg:hidden">
-                            <label htmlFor="my-drawer-2" aria-label="open sidebar" className="btn btn-square btn-ghost">
-                                <svg xmlns="http://www.w3.org/2000/svg" className="size-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /> </svg>
-
-                            </label>
-                        </div>
-                        <Link href="/" className=""><img className="w-full min-w-20 max-w-28" src="/startech.svg" alt="startech" /></Link>
-                        <div className="navbar-center hidden lg:flex grow">
-                            <Search />
-                        </div>
-                        <div className="navbar-end lg:w-auto">
-                            <div className="hidden lg:flex gap-x-5">
-                                {impLinks.map((links) => (
-                                    <Profile key={links.id} icon={links.icon} title={links.title} subtitle={links.subtitle} href={links.href} />
-                                ))}
-                            </div>
-                            <Link href="#" className="hidden lg:block ml-5"><button className="btn animatedBtn">PC Builder</button></Link>
-                            <div className="join lg:hidden text-white gap-x-5">
-                                <button><FaSearch /></button>
-                                <label htmlFor="my-drawer-5" className="drawer-button text-xl"><FaShoppingBasket /></label>
-                            </div>
-                        </div>
-                    </div>
-                </header>
-                <Menu />
+  return (
+    <div className="drawer">
+      <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
+      <div className="drawer-content flex flex-col">
+        {/* Navbar */}
+        <header className=" bg-main max-lg:sticky max-lg:top-0 z-10">
+          <div className="navbar max-w-xxl mx-auto gap-x-5">
+            <div className="w-1/2 lg:hidden">
+              <label
+                htmlFor="my-drawer-2"
+                aria-label="open sidebar"
+                className="btn btn-square btn-ghost"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="size-5 text-white"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  {" "}
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M4 6h16M4 12h8m-8 6h16"
+                  />{" "}
+                </svg>
+              </label>
             </div>
-            <Drawer />
-        </div>
-    )
+            <Link href="/" className="">
+              <img
+                className="w-full min-w-20 max-w-28"
+                src="/startech.svg"
+                alt="startech"
+              />
+            </Link>
+            <div className="navbar-center hidden lg:flex grow">
+              <Search />
+            </div>
+            <div className="navbar-end lg:w-auto">
+              <div className="hidden lg:flex gap-x-5">
+                {impLinks.map((links) => (
+                  <Profile
+                    key={links.id}
+                    icon={links.icon}
+                    title={links.title}
+                    subtitle={links.subtitle}
+                    href={links.href}
+                  />
+                ))}
+              </div>
+              <Link href="#" className="hidden lg:block ml-5">
+                <button className="btn animatedBtn">PC Builder</button>
+              </Link>
+              <div className="join lg:hidden text-white gap-x-5">
+                <button>
+                  <FaSearch />
+                </button>
+                <label htmlFor="my-drawer-5" className="drawer-button text-xl">
+                  <FaShoppingBasket />
+                </label>
+              </div>
+            </div>
+          </div>
+        </header>
+        <Menu />
+        {children}
+        <Footer />
+      </div>
+      <Drawer />
+    </div>
+  );
 }

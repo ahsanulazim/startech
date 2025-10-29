@@ -1,7 +1,6 @@
 import { Inter_Tight } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/home/Navbar";
-import Footer from "@/components/home/Footer";
 import Fab from "@/components/ui/Fab";
 import { FaShoppingBasket } from "react-icons/fa";
 import CartDrawer from "@/components/shop/CartDrawer";
@@ -19,22 +18,22 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-
   return (
     <html lang="en">
-      <body
-        className={` ${interTight.variable} font-inter antialiased`}
-      >
-        <Navbar />
-        {children}
+      <body className={` ${interTight.variable} font-inter antialiased`}>
+        <Navbar>{children}</Navbar>
         <CartDrawer />
         <Fab bottom={"bottom-20"}>
           <Compare />
         </Fab>
         <Fab>
-          <label htmlFor="my-drawer-5" className="drawer-button btn btn-lg btn-square btn-primary shadow-main/60 border-white/20 bg-main shadow-md"><FaShoppingBasket /></label>
+          <label
+            htmlFor="my-drawer-5"
+            className="drawer-button btn btn-lg btn-square btn-primary shadow-main/60 border-white/20 bg-main shadow-md"
+          >
+            <FaShoppingBasket />
+          </label>
         </Fab>
-        <Footer />
       </body>
     </html>
   );
