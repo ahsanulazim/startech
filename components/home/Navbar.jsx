@@ -11,6 +11,7 @@ import {
 import Profile from "../ui/Profile";
 import Menu from "./Menu";
 import Footer from "./Footer";
+import BottomNav from "../ui/BottomNav";
 
 export default function Navbar({ children }) {
   const impLinks = [
@@ -106,6 +107,7 @@ export default function Navbar({ children }) {
         <Menu />
         {children}
         <Footer />
+        <BottomNav />
       </div>
       <Drawer />
     </div>
