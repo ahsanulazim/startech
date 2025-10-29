@@ -3,7 +3,7 @@ import { MdImportantDevices, MdLibraryAdd } from "react-icons/md";
 
 export default function BottomNav() {
   return (
-    <div className="dock sticky bg-main text-neutral-content lg:hidden border-t-white/20">
+    <div className="dock sticky bg-main text-neutral-content lg:hidden border-t-base-300">
       <button>
         <FaFire className="size-5" />
         <span className="dock-label">Offer</span>

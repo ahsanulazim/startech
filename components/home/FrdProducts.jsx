@@ -17,7 +17,7 @@ export default function FrdProducts() {
   return (
     <Section>
       <Title heading={t.heading} subHeading={t.subHeading} />
-      <div className="grid grid-cols-5 gap-5">
+      <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5">
         {products ? (
           products.map((product) => (
             <ProductCard key={product.id} product={product} />
