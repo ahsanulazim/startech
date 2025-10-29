@@ -1,6 +1,7 @@
 import Accordion from "@/components/home/Accordion";
 import Comparison from "@/components/home/Comparison";
 import Featured from "@/components/home/Featured";
+import FrdProducts from "@/components/home/FrdProducts";
 import Hero from "@/components/home/Hero";
 import Location from "@/components/home/Location";
 import Tool from "@/components/home/Tool";
@@ -15,6 +16,7 @@ export default function Home() {
       <Featured />
       <Comparison />
       <Location />
+      <FrdProducts />
       <Accordion />
     </main>
   );
