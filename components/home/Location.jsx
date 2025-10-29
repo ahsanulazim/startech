@@ -1,6 +1,7 @@
 import { FaLocationDot } from "react-icons/fa6";
 import { HiMiniMagnifyingGlass } from "react-icons/hi2";
 import Section from "../ui/Section";
+import Link from "next/link";
 
 export default function Location() {
   return (
@@ -17,9 +18,11 @@ export default function Location() {
             </p>
           </div>
         </div>
-        <button className="btn rounded-full btn-warning">
-          Find Our Store <HiMiniMagnifyingGlass />
-        </button>
+        <Link href="#">
+          <button className="btn md:btn-lg rounded-full btn-warning">
+            Find Our Store <HiMiniMagnifyingGlass />
+          </button>
+        </Link>
       </div>
     </Section>
   );

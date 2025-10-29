@@ -1,3 +1,4 @@
+import Accordion from "@/components/home/Accordion";
 import Comparison from "@/components/home/Comparison";
 import Featured from "@/components/home/Featured";
 import Hero from "@/components/home/Hero";
@@ -14,6 +15,7 @@ export default function Home() {
       <Featured />
       <Comparison />
       <Location />
+      <Accordion />
     </main>
   );
 }
