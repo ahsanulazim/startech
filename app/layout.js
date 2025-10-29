@@ -5,7 +5,7 @@ import Fab from "@/components/ui/Fab";
 import { FaShoppingBasket } from "react-icons/fa";
 import CartDrawer from "@/components/shop/CartDrawer";
 import Compare from "@/components/shop/Compare";
-import MyContext from "@/context/MyContext";
+import MyContext from "./context/MyContext";
 
 const interTight = Inter_Tight({
   variable: "--font-inter-tight",

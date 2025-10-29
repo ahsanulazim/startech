@@ -46,3 +46,7 @@
     background-position: 0 50%;
   }
 }
+
+.btn-main-style{
+  @apply bg-second/10 hover:bg-second text-second hover:text-white shadow-none;
+}

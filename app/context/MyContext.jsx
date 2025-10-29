@@ -16,5 +16,5 @@ export default function MyContext({ children }) {
     products,
   };
 
-  return <MyContext value={data}>{children}</MyContext>;
+  return <SiteContext value={data}>{children}</SiteContext>;
 }

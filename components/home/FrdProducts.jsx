@@ -4,10 +4,10 @@ import { useContext } from "react";
 import ProductCard from "../shop/ProductCard";
 import Section from "../ui/Section";
 import Title from "../ui/Title";
-import { SiteContext } from "@/context/MyContext";
+import { SiteContext } from "@/app/context/MyContext";
 
 export default function FrdProducts() {
-  //   const { products } = useContext(SiteContext);
+  const { products } = useContext(SiteContext);
 
   const t = {
     heading: "Featured Products",
@@ -17,11 +17,15 @@ export default function FrdProducts() {
   return (
     <Section>
       <Title heading={t.heading} subHeading={t.subHeading} />
-      {/* {products ? (
-        products.map((product) => <ProductCard key={product.id} />)
-      ) : (
-        <div>Loading</div>
-      )} */}
+      <div className="grid grid-cols-5 gap-5">
+        {products ? (
+          products.map((product) => (
+            <ProductCard key={product.id} product={product} />
+          ))
+        ) : (
+          <div>Loading</div>
+        )}
+      </div>
     </Section>
   );
 }
