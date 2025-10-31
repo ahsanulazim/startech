@@ -1,15 +1,19 @@
+import Link from "next/link";
+
 export default function ProductCard({ product }) {
   return (
     <div className="card bg-base-100 w-full shadow-sm">
-      <figure className="p-5">
+      <Link href={`/${product.id}`} className="p-5">
         <img
           src={product.image}
           alt={product.title}
           className="rounded-md aspect-square object-contain"
         />
-      </figure>
+      </Link>
       <div className="card-body border-t border-t-base-300">
-        <h2 className="card-title text-base">{product.title}</h2>
+        <h2 className="card-title text-base truncate line-clamp-2">
+          <Link href={`/${product.id}`}>{product.title}</Link>
+        </h2>
         <p>
           A card component has a figure, a body part, and inside body there are
           title and actions parts
