@@ -1,67 +1,40 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
 import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 function Gallery() {
-  const [nav1, setNav1] = useState(null);
-  const [nav2, setNav2] = useState(null);
-  let sliderRef1 = useRef(null);
-  let sliderRef2 = useRef(null);
-
-  useEffect(() => {
-    setNav1(sliderRef1);
-    setNav2(sliderRef2);
-  }, []);
+  const settings = {
+    customPaging: function (i) {
+      return (
+        <a>
+          <img src={`/product/gt710 (${i + 1}).jpg`} />
+        </a>
+      );
+    },
+    dots: true,
+    dotsClass: "slick-dots slick-thumb",
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: true
+  };
   return (
     <div className="slider-container">
-      <h2>Slider Syncing (Gallery)</h2>
-      <h4>First Slider</h4>
-      <Slider asNavFor={nav2} ref={(slider) => (sliderRef1 = slider)}>
+      <Slider {...settings}>
         <div>
-          <h3>1</h3>
+          <img src="/product/gt710 (1).jpg" alt='gt7101' />
         </div>
         <div>
-          <h3>2</h3>
+          <img src="/product/gt710 (2).jpg" alt='gt7102' />
         </div>
         <div>
-          <h3>3</h3>
+          <img src="/product/gt710 (3).jpg" alt='gt7103' />
         </div>
         <div>
-          <h3>4</h3>
-        </div>
-        <div>
-          <h3>5</h3>
-        </div>
-        <div>
-          <h3>6</h3>
-        </div>
-      </Slider>
-      <h4>Second Slider</h4>
-      <Slider
-        asNavFor={nav1}
-        ref={(slider) => (sliderRef2 = slider)}
-        slidesToShow={3}
-        swipeToSlide={true}
-        focusOnSelect={true}
-      >
-        <div>
-          <h3>1</h3>
-        </div>
-        <div>
-          <h3>2</h3>
-        </div>
-        <div>
-          <h3>3</h3>
-        </div>
-        <div>
-          <h3>4</h3>
-        </div>
-        <div>
-          <h3>5</h3>
-        </div>
-        <div>
-          <h3>6</h3>
+          <img src="/product/gt710 (4).jpg" alt='gt7104' />
         </div>
       </Slider>
     </div>
