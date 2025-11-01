@@ -3,16 +3,16 @@ import Gallery from "../ui/Gallery";
 import PaymentCard from "./PaymentCard";
 import Quantity from "./Quantity";
 
-export default function Product() {
+export default function Product({ product }) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-7 gap-5 bg-base-100 p-5 rounded-md">
-      <Gallery />
+      <Gallery product={product} />
       <div className="md:col-span-4">
         <h1 className="text-second text-xl font-semibold mb-2">
-          Colorful GeForce GT710-2GD3-V 2GB Graphics Card
+          {product.title}
         </h1>
         <div className="flex flex-wrap gap-2 mb-5">
-          <Chips />
+          <Chips price={product.price} />
           <Chips />
           <Chips />
           <Chips />
@@ -35,12 +35,12 @@ export default function Product() {
         <div className="mb-3">
           <h3 className="font-semibold">Payment Options</h3>
           <div className="flex max-md:flex-col gap-3 mt-3">
-            <PaymentCard />
+            <PaymentCard product={product} />
           </div>
         </div>
         <div className="flex gap-3">
           <Quantity />
-          <button className="btn btn-primary bg-second/95 hover:bg-second shadow-none btn-wide">
+          <button className="btn btn-primary bg-second/95 hover:bg-second shadow-none grow">
             Buy Now
           </button>
         </div>

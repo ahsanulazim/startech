@@ -2,15 +2,14 @@
 
 import { useState } from "react";
 
-export default function PaymentCard() {
+export default function PaymentCard({ product }) {
   const [selected, setSelected] = useState("cash");
 
   return (
     <>
       <div
-        className={`flex items-center gap-2 bg-base-100 p-3 rounded-lg border-2 cursor-pointer grow ${
-          selected === "cash" ? "border-second" : "border-base-300"
-        }`}
+        className={`flex items-center gap-2 bg-base-100 p-3 rounded-lg border-2 cursor-pointer grow ${selected === "cash" ? "border-second" : "border-base-300"
+          }`}
         onClick={() => setSelected("cash")}
       >
         <input
@@ -21,15 +20,14 @@ export default function PaymentCard() {
           className="radio checked:bg-blue-200 checked:text-second checked:border-second"
         />
         <div>
-          <h4 className="text-xl font-semibold">20,500</h4>
+          <h4 className="text-xl font-semibold">${product.price}</h4>
           <p className="text-xs lg:text-sm">Cash Discount Price</p>
           <p className="text-xs lg:text-sm">Online / Cash Payment</p>
         </div>
       </div>
       <div
-        className={`flex items-center gap-2 bg-base-100 p-3 rounded-lg border-2 cursor-pointer grow ${
-          selected === "installment" ? "border-second" : "border-base-300"
-        }`}
+        className={`flex items-center gap-2 bg-base-100 p-3 rounded-lg border-2 cursor-pointer grow ${selected === "installment" ? "border-second" : "border-base-300"
+          }`}
         onClick={() => setSelected("installment")}
       >
         <input
@@ -40,7 +38,7 @@ export default function PaymentCard() {
           className="radio checked:bg-blue-200 checked:text-second checked:border-second"
         />
         <div>
-          <h4 className="text-xl font-semibold">20,500</h4>
+          <h4 className="text-xl font-semibold">${(product.price / 12).toFixed(2)}/month</h4>
           <p className="text-xs lg:text-sm">Regular Price</p>
           <p className="text-xs lg:text-sm">0% EMI for up to 12 Months</p>
         </div>

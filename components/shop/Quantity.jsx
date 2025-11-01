@@ -10,16 +10,16 @@ export default function Quantity() {
   const decrease = () => setQuantity((prev) => (prev > 1 ? prev - 1 : 1)); // 1 এর নিচে নামবে না
 
   return (
-    <div className="flex items-center gap-2">
+    <div className="flex items-center">
       {/* Minus Button */}
-      <button onClick={decrease} className="btn btn-sm btn-outline">
+      <button onClick={decrease} className="btn btn-square border-base-300 btn-outline">
         <FaMinus />
       </button>
 
       {/* Input Field */}
       <input
         type="number"
-        className="input w-12 text-center quantity"
+        className="input w-12 text-center quantity border-base-300"
         value={quantity}
         onChange={(e) => {
           const val = parseInt(e.target.value) || 1;
@@ -28,7 +28,7 @@ export default function Quantity() {
       />
 
       {/* Plus Button */}
-      <button onClick={increase} className="btn btn-sm btn-outline">
+      <button onClick={increase} className="btn btn-square border-base-300 btn-outline">
         <FaPlus />
       </button>
     </div>

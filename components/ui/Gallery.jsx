@@ -5,12 +5,12 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./gallery.css";
 
-function Gallery() {
+function Gallery({ product }) {
   const settings = {
     customPaging: function (i) {
       return (
         <a>
-          <img src={`/product/gt710 (${i + 1}).jpg`} />
+          <img src={product.image} alt={product.title} />
         </a>
       );
     },
@@ -28,29 +28,8 @@ function Gallery() {
         <div>
           <img
             className="w-full rounded-md"
-            src="/product/gt710 (1).jpg"
-            alt="gt7101"
-          />
-        </div>
-        <div>
-          <img
-            className="w-full rounded-md"
-            src="/product/gt710 (2).jpg"
-            alt="gt7102"
-          />
-        </div>
-        <div>
-          <img
-            className="w-full rounded-md"
-            src="/product/gt710 (3).jpg"
-            alt="gt7103"
-          />
-        </div>
-        <div>
-          <img
-            className="w-full rounded-md"
-            src="/product/gt710 (4).jpg"
-            alt="gt7104"
+            src={product.image}
+            alt={product.title}
           />
         </div>
       </Slider>
