@@ -3,7 +3,7 @@ import { FaHouse } from "react-icons/fa6";
 
 export default function Breadcrumbs({ title }) {
   return (
-    <div className="breadcrumbs text-xs">
+    <div className="breadcrumbs text-sm mb-5">
       <ul>
         <li>
           <Link href="/">

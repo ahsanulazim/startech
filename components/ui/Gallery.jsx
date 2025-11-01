@@ -27,7 +27,7 @@ function Gallery({ product }) {
       <Slider {...settings}>
         <div>
           <img
-            className="w-full rounded-md"
+            className="aspect-square object-contain rounded-md p-10"
             src={product.image}
             alt={product.title}
           />
