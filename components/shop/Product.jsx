@@ -1,10 +1,11 @@
 import Chips from "../ui/Chips";
 import Gallery from "../ui/Gallery";
 import PaymentCard from "./PaymentCard";
+import Quantity from "./Quantity";
 
 export default function Product() {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-7 gap-5">
+    <div className="grid grid-cols-1 md:grid-cols-7 gap-5 bg-base-100 p-5 rounded-md">
       <Gallery />
       <div className="md:col-span-4">
         <h1 className="text-second text-xl font-semibold mb-2">
@@ -31,11 +32,17 @@ export default function Product() {
             View More Info
           </a>
         </div>
-        <div>
+        <div className="mb-3">
           <h3 className="font-semibold">Payment Options</h3>
           <div className="flex max-md:flex-col gap-3 mt-3">
             <PaymentCard />
           </div>
+        </div>
+        <div className="flex gap-3">
+          <Quantity />
+          <button className="btn btn-primary bg-second/95 hover:bg-second shadow-none btn-wide">
+            Buy Now
+          </button>
         </div>
       </div>
     </div>

@@ -9,14 +9,13 @@ export default function PaymentCard() {
     <>
       <div
         className={`flex items-center gap-2 bg-base-100 p-3 rounded-lg border-2 cursor-pointer grow ${
-          selected === "cash" ? "border-second" : "border-base-100"
+          selected === "cash" ? "border-second" : "border-base-300"
         }`}
         onClick={() => setSelected("cash")}
       >
         <input
           type="radio"
           name="radio-12"
-          defaultChecked
           checked={selected === "cash"}
           onChange={() => setSelected("cash")}
           className="radio checked:bg-blue-200 checked:text-second checked:border-second"
@@ -29,7 +28,7 @@ export default function PaymentCard() {
       </div>
       <div
         className={`flex items-center gap-2 bg-base-100 p-3 rounded-lg border-2 cursor-pointer grow ${
-          selected === "installment" ? "border-second" : "border-base-100"
+          selected === "installment" ? "border-second" : "border-base-300"
         }`}
         onClick={() => setSelected("installment")}
       >
