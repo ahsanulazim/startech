@@ -2,7 +2,7 @@ import Specification from "./Specification";
 
 export default function Tabs({ description, title }) {
   return (
-    <div className="tabs tabs-lift">
+    <div className="tabs tabs-lift ">
       <input
         type="radio"
         name="my_tabs_3"
