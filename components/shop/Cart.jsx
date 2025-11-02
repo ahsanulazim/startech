@@ -28,10 +28,13 @@ export default function Cart() {
         <ul className="flex-1 overflow-y-auto">
           {/* Sidebar content here */}
           {cartedProducts.map((product) => (
-            <li className="flex-row flex-nowrap items-start" key={product.id}>
-              <div className="flex items-start">
+            <li
+              className="flex-row flex-nowrap items-start p-2 hover:bg-base-300"
+              key={product.id}
+            >
+              <div className="flex grow items-start p-0 hover:bg-transparent">
                 <img
-                  className="size-10 rounded-box"
+                  className="size-10 rounded-box aspect-square object-contain"
                   src={product.image}
                   alt={product.title}
                 />
@@ -43,13 +46,13 @@ export default function Cart() {
                     product.price * product.quantity
                   }`}</p>
                 </div>
-                <button
-                  className="btn btn-square btn-error btn-sm"
-                  onClick={() => removeFromCart(product.id)}
-                >
-                  <FaTrash />
-                </button>
               </div>
+              <button
+                className="btn btn-square btn-error btn-sm"
+                onClick={() => removeFromCart(product.id)}
+              >
+                <FaTrash />
+              </button>
             </li>
           ))}
         </ul>
