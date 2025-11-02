@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Buy from "./Buy";
 
 export default function ProductCard({ product }) {
   return (
@@ -14,16 +15,12 @@ export default function ProductCard({ product }) {
         <h2 className="card-title text-base line-clamp-1">
           <Link href={`/${product.id}`}>{product.title}</Link>
         </h2>
-        <p className="line-clamp-3 text-gray-600">
-          {product.description}
-        </p>
+        <p className="line-clamp-3 text-gray-600">{product.description}</p>
         <div className="card-actions">
           <p className="text-lg text-accent font-semibold text-center">
             ${product.price}
           </p>
-          <button className="btn btn-primary w-full btn-soft btn-main-style">
-            Buy Now
-          </button>
+          <Buy className="w-full btn-soft btn-main-style" pid={product.id} />
         </div>
       </div>
     </div>

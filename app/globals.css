@@ -21,7 +21,14 @@
 }
 
 .animatedBtn {
-  background: linear-gradient(45deg, #00237e, #3749bb, #0bc1e9, #3749bb, #00237e);
+  background: linear-gradient(
+    45deg,
+    #00237e,
+    #3749bb,
+    #0bc1e9,
+    #3749bb,
+    #00237e
+  );
   background-size: 400% 400%;
   animation: gradientbg 15s ease-in-out infinite;
   border: none;
@@ -47,6 +54,10 @@
   }
 }
 
-.btn-main-style{
+.btn-main-style {
   @apply bg-second/10 hover:bg-second text-second hover:text-white shadow-none;
+}
+
+.btn-filled-style {
+  @apply bg-second/95 hover:bg-second shadow-none;
 }

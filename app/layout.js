@@ -6,6 +6,7 @@ import { FaShoppingBasket } from "react-icons/fa";
 import CartDrawer from "@/components/shop/CartDrawer";
 import Compare from "@/components/shop/Compare";
 import MyContext from "./context/MyContext";
+import Basket from "@/components/shop/Basket";
 
 const interTight = Inter_Tight({
   variable: "--font-inter-tight",
@@ -29,12 +30,10 @@ export default function RootLayout({ children }) {
             <Compare />
           </Fab>
           <Fab>
-            <label
-              htmlFor="my-drawer-5"
-              className="drawer-button btn btn-lg btn-square btn-primary shadow-main/60 border-white/20 bg-main shadow-md"
-            >
-              <FaShoppingBasket />
-            </label>
+            <Basket
+              className="btn btn-lg btn-square btn-primary shadow-main/60 border-white/20 bg-main shadow-md"
+              indicator={true}
+            />
           </Fab>
         </MyContext>
       </body>

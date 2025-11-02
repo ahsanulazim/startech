@@ -12,6 +12,7 @@ import Profile from "../ui/Profile";
 import Menu from "./Menu";
 import Footer from "./Footer";
 import BottomNav from "../ui/BottomNav";
+import Basket from "../shop/Basket";
 
 export default function Navbar({ children }) {
   const impLinks = [
@@ -97,9 +98,7 @@ export default function Navbar({ children }) {
                 <button>
                   <FaSearch />
                 </button>
-                <label htmlFor="my-drawer-5" className="drawer-button text-xl">
-                  <FaShoppingBasket />
-                </label>
+                <Basket className="text-xl" indicator={false} />
               </div>
             </div>
           </div>

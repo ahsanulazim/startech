@@ -5,6 +5,13 @@ export const SiteContext = createContext();
 
 export default function MyContext({ children }) {
   const [products, setProducts] = useState(null);
+  const [cartedProducts, setCartedProducts] = useState(() => {
+    if (typeof window !== "undefined") {
+      const stored = localStorage.getItem("cartedProducts");
+      return stored ? JSON.parse(stored) : [];
+    }
+    return [];
+  });
 
   useEffect(() => {
     fetch("https://fakestoreapi.com/products")
@@ -12,8 +19,63 @@ export default function MyContext({ children }) {
       .then((data) => setProducts(data));
   }, []);
 
+  // Add product to cart
+  const addToCart = (id) => {
+    const product = products.find((p) => p.id === id);
+    if (!product) return;
+
+    setCartedProducts((prev) => {
+      const existing = prev.find((item) => item.id === id);
+      if (existing) {
+        // quantity বাড়াও
+        return prev.map((item) =>
+          item.id === id ? { ...item, quantity: item.quantity + 1 } : item
+        );
+      } else {
+        // নতুন প্রোডাক্ট quantity = 1
+        return [...prev, { ...product, quantity: 1 }];
+      }
+    });
+  };
+
+  //Cart Data to Local Storage
+  useEffect(() => {
+    localStorage.setItem("cartedProducts", JSON.stringify(cartedProducts));
+  }, [cartedProducts]);
+
+  // Remove product from cart
+  const removeFromCart = (id) => {
+    setCartedProducts((prev) => prev.filter((p) => p.id !== id));
+  };
+
+  //Total Products
+  const total = cartedProducts
+    .reduce((acc, product) => acc + product.price * product.quantity, 0)
+    .toFixed(2);
+
+  //Total Quantity
+  const totalQuantity = cartedProducts.reduce(
+    (acc, product) => acc + Number(product.quantity),
+    0
+  );
+
+  //Update Quantity
+  const updateQuantity = (id, quantity) => {
+    setCartedProducts((prev) =>
+      prev.map((item) =>
+        item.id === id ? { ...item, quantity: quantity } : item
+      )
+    );
+  };
+
   const data = {
     products,
+    addToCart,
+    cartedProducts,
+    removeFromCart,
+    total,
+    updateQuantity,
+    totalQuantity,
   };
 
   return <SiteContext value={data}>{children}</SiteContext>;

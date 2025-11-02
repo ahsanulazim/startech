@@ -1,5 +1,6 @@
 import Chips from "../ui/Chips";
 import Gallery from "../ui/Gallery";
+import Buy from "./Buy";
 import PaymentCard from "./PaymentCard";
 import Quantity from "./Quantity";
 
@@ -40,9 +41,7 @@ export default function Product({ product }) {
         </div>
         <div className="flex gap-3">
           <Quantity />
-          <button className="btn btn-primary bg-second/95 hover:bg-second shadow-none grow">
-            Buy Now
-          </button>
+          <Buy className="grow btn-filled-style" pid={product.id} />
         </div>
       </div>
     </div>
