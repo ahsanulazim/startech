@@ -64,7 +64,10 @@ export default function Invoice() {
                 </div>
               </td>
               <td className="max-sm:hidden">{product.price}</td>
-              <td>{(product.price * product.quantity).toFixed(2)}</td>
+              <td>{Number.isInteger(product.price * product.quantity)
+                ? product.price * product.quantity
+                : (product.price * product.quantity).toFixed(2)}
+              </td>
             </tr>
           ))}
         </tbody>

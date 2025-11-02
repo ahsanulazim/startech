@@ -1,6 +1,7 @@
 "use client";
 
 import { SiteContext } from "@/app/context/MyContext";
+import Link from "next/link";
 import { useContext } from "react";
 import { FaTrash, FaXmark } from "react-icons/fa6";
 
@@ -25,9 +26,9 @@ export default function Cart() {
             <FaXmark />
           </label>
         </div>
-        <ul className="flex-1 overflow-y-auto">
+        <ul className={`flex-1 overflow-y-auto ${cartedProducts.length > 0 ? "" : "flex justify-center"}`}>
           {/* Sidebar content here */}
-          {cartedProducts.map((product) => (
+          {cartedProducts.length > 0 ? (cartedProducts.map((product) => (
             <li
               className="flex-row flex-nowrap items-start p-2 hover:bg-base-300"
               key={product.id}
@@ -40,11 +41,9 @@ export default function Cart() {
                 />
                 <div className="text-pretty">
                   <h4>{product.title}</h4>
-                  <p className="text-sm uppercase font-semibold">{`$${
-                    product.price
-                  } × ${product.quantity} = $${
-                    product.price * product.quantity
-                  }`}</p>
+                  <p className="text-sm uppercase font-semibold">{`$${product.price
+                    } × ${product.quantity} = $${product.price * product.quantity
+                    }`}</p>
                 </div>
               </div>
               <button
@@ -53,8 +52,10 @@ export default function Cart() {
               >
                 <FaTrash />
               </button>
-            </li>
-          ))}
+            </li>))
+          ) : (
+            <li className="justify-center">Empty Cart</li>
+          )}
         </ul>
         <footer>
           <form className="fieldset bg-base-300 border-base-300 rounded-box w-xs border p-2">
@@ -78,9 +79,11 @@ export default function Cart() {
               <div className="font-bold">৳{total}</div>
             </div>
           </div>
-          <button className="btn w-full bg-accent border-accent rounded-none text-white">
-            Checkout
-          </button>
+          <Link href="/cart">
+            <button className="btn w-full bg-accent border-accent rounded-none text-white">
+              Checkout
+            </button>
+          </Link>
         </footer>
       </div>
     </div>
