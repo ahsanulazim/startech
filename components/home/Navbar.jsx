@@ -13,6 +13,7 @@ import Menu from "./Menu";
 import Footer from "./Footer";
 import BottomNav from "../ui/BottomNav";
 import Basket from "../shop/Basket";
+import Summary from "../shop/Summary";
 
 export default function Navbar({ children }) {
   const impLinks = [

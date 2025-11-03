@@ -18,7 +18,7 @@ export default function cart() {
         <div
           className={`${
             cartedProducts.length > 0
-              ? "grid md:grid-cols-7 gap-5 items-start"
+              ? "md:grid md:grid-cols-7 gap-5 items-start"
               : ""
           }`}
         >
