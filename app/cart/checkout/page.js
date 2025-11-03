@@ -1,5 +1,4 @@
-import OrderConfirm from "@/components/shop/OrderConfirm";
-import OrderForm from "@/components/shop/OrderForm";
+import OrderConfirm from "@/components/shop/multi-step-form/OrderConfirm";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import Section from "@/components/ui/Section";
 

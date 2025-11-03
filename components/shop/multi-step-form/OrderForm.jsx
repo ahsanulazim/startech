@@ -25,15 +25,34 @@ export default function OrderForm() {
         District
       </label>
       <select defaultValue="Pick a color" className="select" name="district">
-        <option disabled={true}>Pick a color</option>
-        <option>Crimson</option>
-        <option>Amber</option>
-        <option>Velvet</option>
+        <option disabled={true}>District</option>
+        <option>Dhaka</option>
+        <option>Mymensingh</option>
+        <option>Rajshahi</option>
+        <option>Sylhet</option>
+        <option>Rangpur</option>
+        <option>Chittagong</option>
+        <option>Khulna</option>
+        <option>Barisal</option>
       </select>
-      <label className="label">Author</label>
-      <input type="text" className="input" placeholder="Name" />
-      <label className="label">Author</label>
-      <input type="text" className="input" placeholder="Name" />
+      <label className="label" htmlFor="phone">
+        Phone
+      </label>
+      <input
+        type="tel"
+        className="input"
+        placeholder="01XXXXXXXXX"
+        name="phone"
+      />
+      <label className="label" htmlFor="email">
+        Email
+      </label>
+      <input
+        type="email"
+        className="input"
+        placeholder="user@mail.com"
+        name="email"
+      />
     </form>
   );
 }
