@@ -5,13 +5,14 @@ export const SiteContext = createContext();
 
 export default function MyContext({ children }) {
   const [products, setProducts] = useState(null);
-  const [cartedProducts, setCartedProducts] = useState(() => {
-    if (typeof window !== "undefined") {
-      const stored = localStorage.getItem("cartedProducts");
-      return stored ? JSON.parse(stored) : [];
+  const [cartedProducts, setCartedProducts] = useState([]);
+
+  useEffect(() => {
+    const stored = localStorage.getItem("cartedProducts");
+    if (stored) {
+      setCartedProducts(JSON.parse(stored));
     }
-    return [];
-  });
+  }, []);
 
   useEffect(() => {
     fetch("https://fakestoreapi.com/products")
