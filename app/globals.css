@@ -14,6 +14,8 @@
   --breakpoint-xxl: 82.5rem;
   --breakpoint-xs: 30rem;
   --breakpoint-2xs: 20rem;
+  --shadow-t-md: 0 -4px 6px -1px rgb(0 0 0 / 0.1),
+    0 2px 4px -2px rgb(0 0 0 / 0.1);
   --color-main: hsl(206, 61%, 8%);
   --color-accent: hsl(11, 86%, 54%);
   --color-second: hsl(232, 54%, 36%);

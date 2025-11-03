@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Summary({ total }) {
   return (
-    <div className="flex justify-end max-md:fixed max-md:w-full left-0 bottom-16 md:col-span-2 bg-base-100 rounded-t-md max-md:z-50 md:rounded-md p-4">
+    <div className="flex justify-end max-md:shadow-t-md max-md:fixed max-md:w-full max-md:left-0 max-md:bottom-16 md:sticky md:top-14 md:col-span-2 bg-base-100 rounded-t-md max-md:z-50 md:rounded-md p-4">
       <div className="w-full">
         <h2 className="max-md:hidden text-xl lg:text-3xl font-bold mb-5">
           Summary
