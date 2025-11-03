@@ -15,9 +15,15 @@ export default function cart() {
     <main className="bg-base-300">
       <Section>
         <Breadcrumbs title="Cart" />
-        <div className="grid grid-cols-7 gap-5 items-start">
-          <div className="bg-base-100 p-4 rounded-md col-span-5">
-            <h1 className="text-3xl font-bold">Shopping Cart</h1>
+        <div
+          className={`${
+            cartedProducts.length > 0
+              ? "grid md:grid-cols-7 gap-5 items-start"
+              : ""
+          }`}
+        >
+          <div className="bg-base-100 p-4 rounded-md md:col-span-5">
+            <h1 className="text-xl lg:text-3xl font-bold">Shopping Cart</h1>
             {cartedProducts.length > 0 ? (
               <>
                 <Invoice />
