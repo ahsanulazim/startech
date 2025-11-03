@@ -7,6 +7,8 @@ export default function cart() {
     <main className="bg-base-300">
       <Section>
         <Breadcrumbs title="Cart" />
+      </Section>
+      <Section className="pt-0!">
         <CartOverview />
       </Section>
     </main>

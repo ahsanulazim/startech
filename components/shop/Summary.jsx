@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Summary({ total }) {
   return (
     <div className="flex justify-end max-md:fixed max-md:w-full left-0 bottom-16 md:col-span-2 bg-base-100 rounded-t-md max-md:z-50 md:rounded-md p-4">
@@ -14,9 +16,11 @@ export default function Summary({ total }) {
             <div className="text-black/60">Total</div>
             <div className="font-bold">৳{total}</div>
           </div>
-          <button className="btn btn-primary btn-filled-style md:w-full">
-            Checkout
-          </button>
+          <Link href="/cart/checkout">
+            <button className="btn btn-primary btn-filled-style md:w-full">
+              Confirm Order
+            </button>
+          </Link>
         </div>
       </div>
     </div>

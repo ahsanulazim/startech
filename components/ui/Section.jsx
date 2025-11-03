@@ -1,5 +1,9 @@
-export default function Section({ children }) {
+export default function Section({ className, children }) {
   return (
-    <section className="max-w-xxl w-full mx-auto px-4 py-5">{children}</section>
+    <section
+      className={`max-w-xxl w-full mx-auto px-4 py-5 ${className && className}`}
+    >
+      {children}
+    </section>
   );
 }
