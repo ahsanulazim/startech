@@ -1,6 +1,71 @@
+'use client'
 import Link from "next/link";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { useState } from "react";
+import auth from "@/firebase/firebase";
+import { redirect, useRouter } from "next/navigation";
 
 export default function UserForm({ login }) {
+
+    const [loading, setLoading] = useState(false);
+    const router = useRouter();
+
+
+    //login user logic
+
+    const handleLogin = (e) => {
+        e.preventDefault();
+        setLoading(true);
+        const email = e.target.email.value;
+        const password = e.target.password.value;
+
+        signInWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                setLoading(false)
+                // Signed in 
+                const user = userCredential.user;
+                router.push("/dashboard");
+                // ...
+            })
+            .catch((error) => {
+                setLoading(false)
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.log(errorMessage);
+
+            });
+    }
+
+    //Register user logic
+
+    const handleRegister = (e) => {
+        e.preventDefault();
+        setLoading(true);
+        const name = e.target.name.value;
+        const phone = e.target.phone.value;
+        const email = e.target.email.value;
+        const password = e.target.password.value;
+
+        createUserWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                // Signed up 
+                setLoading(false);
+                const user = userCredential.user;
+                console.log(user);
+                router.push("/dashboard");
+
+                // ...
+            })
+            .catch((error) => {
+                setLoading(false);
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                // ..
+                console.log(errorMessage);
+
+            });
+    }
+
     return (
         <div className=" bg-base-100 border-base-300 rounded-box w-full max-w-sm border p-4 mx-auto">
             <h1 className="text-center text-xl font-semibold text-main">{login ? "Log in" : "Register"}</h1>
@@ -15,7 +80,7 @@ export default function UserForm({ login }) {
                 </button>
             </div>
             <div className="divider">or</div>
-            <form className="fieldset">
+            <form className="fieldset" onSubmit={login ? (e) => handleLogin(e) : (e) => handleRegister(e)}>
                 {!login && <>
 
                     <label className="label" htmlFor="name">Name</label>
@@ -31,7 +96,7 @@ export default function UserForm({ login }) {
                 <label className="label" htmlFor="password">Password</label>
                 <input type="password" className="input w-full" placeholder="Password" name="password" />
 
-                <button className="btn btn-neutral btn-filled-style mt-4">{login ? "Log in" : "Register"}</button>
+                <button type="submit" className="btn btn-neutral btn-filled-style mt-4">{login ? loading ? <><span className="loading loading-spinner"></span> Log in</> : "Log in" : loading ? <><span className="loading loading-spinner"></span> Register</> : "Register"}</button>
                 <p className="text-center text-sm">{login ? "Don't have an account? " : "Already have an account? "}<Link href={login ? "/register" : "/login"} className="font-semibold text-second">{login ? "Register Now" : "Log in now"}</Link></p>
             </form>
         </div>
