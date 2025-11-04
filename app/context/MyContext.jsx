@@ -1,4 +1,6 @@
 "use client";
+import auth from "@/firebase/firebase";
+import { onAuthStateChanged } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 
 export const SiteContext = createContext();
@@ -6,6 +8,7 @@ export const SiteContext = createContext();
 export default function MyContext({ children }) {
   const [products, setProducts] = useState(null);
   const [cartedProducts, setCartedProducts] = useState([]);
+  const [currentUser, setCurrentUser] = useState(null);
 
   useEffect(() => {
     const stored = localStorage.getItem("cartedProducts");
@@ -68,6 +71,28 @@ export default function MyContext({ children }) {
       )
     );
   };
+
+
+  //User Observer
+
+  useEffect(() => {
+    const observer = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // User is signed in, see docs for a list of available properties
+        // https://firebase.google.com/docs/reference/js/auth.user
+        setUser(user);
+
+        // ...
+      } else {
+        // User is signed out
+        // ...
+        setCurrentUser(null);
+      }
+      setLoading(false);
+    });
+    return () => observer();
+  }, []);
+
 
   const data = {
     products,
