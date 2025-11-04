@@ -10,7 +10,6 @@ import { useContext } from "react";
 export default function Checkout() {
 
   const { cartedProducts } = useContext(SiteContext);
-  console.log(cartedProducts);
 
   if (cartedProducts.length === 0) {
     return redirect('/cart');

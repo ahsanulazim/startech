@@ -35,7 +35,7 @@ export default function ComparisonCard({ selectedIds }) {
               <h3 className="text-xs xs:text-sm w-full line-clamp-1">
                 {p.title}
               </h3>
-              <p className="text-accent font-bold max-xs:text-sm text-center">
+              <p className="text-accent font-bold max-xs:text-sm text-center mt-5">
                 <span lang="bn">৳</span>
                 {p.price}
               </p>

@@ -35,7 +35,7 @@ export default function Navbar({ children }) {
       id: 3,
       title: "Account",
       subtitle: "Login or Register",
-      href: "#",
+      href: "/login",
       icon: <FaUser />,
     },
   ];
