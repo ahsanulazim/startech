@@ -1,17 +1,12 @@
 "use client";
-import {
-  FaCheck,
-  FaCreditCard,
-  FaRegCreditCard,
-  FaTruck,
-} from "react-icons/fa6";
-import { RiArchiveFill, RiArchiveLine } from "react-icons/ri";
+
 import OrderForm from "./OrderForm";
 import { useContext, useState } from "react";
 import Payment from "./Payment";
 import Thanks from "./Thanks";
 import Link from "next/link";
 import { SiteContext } from "@/app/context/MyContext";
+import Steps from "./Steps";
 
 export default function OrderConfirm() {
   const [step, setStep] = useState(0);
@@ -52,58 +47,7 @@ export default function OrderConfirm() {
     <>
       <div className="">
         <div className="flex justify-center">
-          <ul className="steps">
-            <li className="step step-neutral">
-              <span className="step-icon bg-second">
-                {step === 0 ? <FaTruck /> : <FaCheck />}
-              </span>
-              Shipping
-            </li>
-            <li
-              className={`step before:h-1 ${
-                step >= 1
-                  ? "step-neutral before:bg-second"
-                  : "before:bg-base-100"
-              }`}
-            >
-              <span
-                className={`step-icon ${
-                  step >= 1 ? "bg-second" : "bg-base-100"
-                }`}
-              >
-                {step === 1 ? (
-                  <FaCreditCard />
-                ) : step < 1 ? (
-                  <FaRegCreditCard />
-                ) : (
-                  <FaCheck />
-                )}
-              </span>
-              Payment
-            </li>
-            <li
-              className={`step before:h-1 ${
-                step >= 2
-                  ? "step-neutral before:bg-second"
-                  : "before:bg-base-100"
-              }`}
-            >
-              <span
-                className={`step-icon ${
-                  step >= 2 ? "bg-second" : "bg-base-100"
-                }`}
-              >
-                {step === 2 ? (
-                  <RiArchiveFill />
-                ) : step < 2 ? (
-                  <RiArchiveLine />
-                ) : (
-                  <FaCheck />
-                )}
-              </span>
-              Confirmation
-            </li>
-          </ul>
+          <Steps step={step} />
         </div>
         <div className="bg-base-100 w-full max-w-sm mx-auto p-5 mt-5 rounded-md">
           {step === 0 && (

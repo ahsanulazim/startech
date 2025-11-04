@@ -1,4 +1,5 @@
 import { Activity } from "react";
+import Required from "./Required";
 
 export default function OrderForm({ setOrderData, error, orderData }) {
   const handleChange = (e) => {
@@ -14,7 +15,7 @@ export default function OrderForm({ setOrderData, error, orderData }) {
       <h1 className="text-center text-xl font-semibold">Your Details</h1>
 
       <label className="label" htmlFor="name">
-        Name
+        Name<Required />
       </label>
       <input
         type="text"
@@ -28,7 +29,7 @@ export default function OrderForm({ setOrderData, error, orderData }) {
       </Activity>
 
       <label className="label" htmlFor="address">
-        Address
+        Address<Required />
       </label>
       <input
         type="text"
@@ -42,7 +43,7 @@ export default function OrderForm({ setOrderData, error, orderData }) {
       </Activity>
 
       <label className="label" htmlFor="district">
-        District
+        District<Required />
       </label>
       <select
         name="district"
@@ -65,7 +66,7 @@ export default function OrderForm({ setOrderData, error, orderData }) {
       </Activity>
 
       <label className="label" htmlFor="phone">
-        Phone
+        Phone<Required />
       </label>
       <input
         type="tel"

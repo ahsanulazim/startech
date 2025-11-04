@@ -2,11 +2,12 @@
 
 import { SiteContext } from "@/app/context/MyContext";
 import Link from "next/link";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { FaTrash, FaXmark } from "react-icons/fa6";
 
 export default function Cart() {
   const { cartedProducts, removeFromCart, total } = useContext(SiteContext);
+  const [promo, setPromo] = useState("");
 
   return (
     <div className="drawer-side z-50">
@@ -27,9 +28,8 @@ export default function Cart() {
           </label>
         </div>
         <ul
-          className={`flex-1 overflow-y-auto ${
-            cartedProducts.length > 0 ? "" : "flex justify-center"
-          }`}
+          className={`flex-1 overflow-y-auto ${cartedProducts.length > 0 ? "" : "flex justify-center"
+            }`}
         >
           {/* Sidebar content here */}
           {cartedProducts.length > 0 ? (
@@ -73,8 +73,11 @@ export default function Cart() {
                 type="text"
                 className="input join-item focus:outline-none"
                 placeholder="Promo Code"
+                name="promo"
+                value={promo}
+                onChange={(e) => setPromo(e.target.value)}
               />
-              <button className="btn btn-primary join-item">Apply</button>
+              <button className="btn btn-primary join-item" disabled={!promo.trim()}>Apply</button>
             </div>
           </form>
           <div className="my-2">
@@ -94,11 +97,16 @@ export default function Cart() {
               </div>
             </div>
           </div>
-          <Link href="/cart">
-            <button className="btn w-full bg-accent border-accent rounded-none text-white">
+          {
+            cartedProducts.length > 0 ? <Link href="/cart">
+              <button className="btn w-full bg-accent border-accent rounded-none text-white">
+                Checkout
+              </button>
+            </Link> : <button className="btn w-full btn-primary rounded-none" disabled>
               Checkout
             </button>
-          </Link>
+          }
+
         </footer>
       </div>
     </div>

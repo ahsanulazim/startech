@@ -26,7 +26,7 @@ export default function Payment({ total, orderData }) {
             <div className="flex justify-between items-center gap-5">
               <div>
                 <h2 className="card-title">{orderData.name}</h2>
-                <p>{orderData.address}</p>
+                <p>{orderData.address}, {orderData.district}</p>
               </div>
               <button className="btn btn-sm btn-filled-style">
                 <FaPenToSquare />
@@ -49,9 +49,8 @@ export default function Payment({ total, orderData }) {
               {paymentMethods.map((method) => (
                 <li
                   key={method.id}
-                  className={`flex hover:bg-base-300 cursor-pointer ${
-                    isChecked === method.id ? "bg-base-300" : ""
-                  } items-center p-2 rounded-md`}
+                  className={`flex hover:bg-base-300 cursor-pointer ${isChecked === method.id ? "bg-base-300" : ""
+                    } items-center p-2 rounded-md`}
                   onClick={() => setChecked(method.id)}
                 >
                   <div>
