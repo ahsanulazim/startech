@@ -1,7 +1,18 @@
-export default function OrderForm() {
+import { Activity } from "react";
+
+export default function OrderForm({ setOrderData, error, orderData }) {
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setOrderData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
   return (
     <form className="fieldset w-full max-w-xs mx-auto mb-5">
       <h1 className="text-center text-xl font-semibold">Your Details</h1>
+
       <label className="label" htmlFor="name">
         Name
       </label>
@@ -9,8 +20,12 @@ export default function OrderForm() {
         type="text"
         name="name"
         className="input"
-        placeholder="Your Name"
+        onChange={handleChange}
+        value={orderData.name || ""}
       />
+      <Activity when={!!error?.name}>
+        <p className="text-red-500 text-sm">{error.name}</p>
+      </Activity>
 
       <label className="label" htmlFor="address">
         Address
@@ -19,14 +34,23 @@ export default function OrderForm() {
         type="text"
         name="address"
         className="input"
-        placeholder="Your Address"
+        onChange={handleChange}
+        value={orderData.address || ""}
       />
+      <Activity when={!!error?.address}>
+        <p className="text-red-500 text-sm">{error.address}</p>
+      </Activity>
 
       <label className="label" htmlFor="district">
         District
       </label>
-      <select defaultValue="Pick a color" className="select" name="district">
-        <option disabled={true}>District</option>
+      <select
+        name="district"
+        className="select"
+        onChange={handleChange}
+        value={orderData.district || "Select Disctrict"}
+      >
+        <option disabled>Select District</option>
         <option>Dhaka</option>
         <option>Mymensingh</option>
         <option>Rajshahi</option>
@@ -36,24 +60,37 @@ export default function OrderForm() {
         <option>Khulna</option>
         <option>Barisal</option>
       </select>
+      <Activity when={!!error?.district}>
+        <p className="text-red-500 text-sm">{error.district}</p>
+      </Activity>
+
       <label className="label" htmlFor="phone">
         Phone
       </label>
       <input
         type="tel"
-        className="input"
-        placeholder="01XXXXXXXXX"
         name="phone"
+        className="input"
+        onChange={handleChange}
+        value={orderData.phone || ""}
       />
+      <Activity when={!!error?.phone}>
+        <p className="text-red-500 text-sm">{error.phone}</p>
+      </Activity>
+
       <label className="label" htmlFor="email">
         Email
       </label>
       <input
         type="email"
-        className="input"
-        placeholder="user@mail.com"
         name="email"
+        className="input"
+        onChange={handleChange}
+        value={orderData.email || ""}
       />
+      <Activity when={!!error?.email}>
+        <p className="text-red-500 text-sm">{error.email}</p>
+      </Activity>
     </form>
   );
 }

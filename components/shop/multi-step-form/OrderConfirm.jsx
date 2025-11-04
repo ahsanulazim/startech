@@ -15,7 +15,38 @@ import { SiteContext } from "@/app/context/MyContext";
 
 export default function OrderConfirm() {
   const [step, setStep] = useState(0);
+  const [orderData, setOrderData] = useState({});
+  const [error, setError] = useState({});
+
   const { total } = useContext(SiteContext);
+
+  const handleNext = () => {
+    if (step === 0) {
+      let newErrors = {};
+
+      if (!orderData.name) newErrors.name = "Name is required";
+      if (!orderData.address) newErrors.address = "Address is required";
+      if (!orderData.district) newErrors.district = "District is required";
+
+      const phoneRegex = /^01[3-9]\d{8}$/;
+      if (!orderData.phone) {
+        newErrors.phone = "Phone is required";
+      } else if (!phoneRegex.test(orderData.phone)) {
+        newErrors.phone = "Invalid Bangladeshi phone number";
+      }
+
+      if (orderData.email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (!emailRegex.test(orderData.email)) {
+          newErrors.email = "Invalid email address";
+        }
+      }
+      setError(newErrors);
+      if (Object.keys(newErrors).length > 0) return;
+    }
+    setStep((prev) => prev + 1);
+  };
 
   return (
     <>
@@ -75,9 +106,16 @@ export default function OrderConfirm() {
           </ul>
         </div>
         <div className="bg-base-100 w-full max-w-xs mx-auto p-5 mt-5 rounded-md">
-          {step === 0 && <OrderForm />}
+          {step === 0 && (
+            <OrderForm
+              setOrderData={setOrderData}
+              error={error}
+              orderData={orderData}
+            />
+          )}
           {step === 1 && <Payment total={total} />}
           {step === 2 && <Thanks />}
+
           <div className="flex justify-center gap-5 max-w-xs mx-auto">
             <button
               className="btn btn-outline flex-1"
@@ -93,7 +131,7 @@ export default function OrderConfirm() {
             ) : (
               <button
                 className="btn btn-filled-style flex-1"
-                onClick={() => setStep((prev) => prev + 1)}
+                onClick={handleNext}
               >
                 Next
               </button>
