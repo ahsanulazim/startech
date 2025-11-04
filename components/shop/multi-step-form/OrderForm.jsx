@@ -1,6 +1,7 @@
 export default function OrderForm() {
   return (
-    <form className="fieldset bg-base-200 w-full max-w-xs mx-auto border border-base-300 p-4 rounded-md my-5">
+    <form className="fieldset w-full max-w-xs mx-auto mb-5">
+      <h1 className="text-center text-xl font-semibold">Your Details</h1>
       <label className="label" htmlFor="name">
         Name
       </label>
