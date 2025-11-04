@@ -63,3 +63,7 @@
 .btn-filled-style {
   @apply bg-second/95 border-second/95 hover:bg-second shadow-none text-white;
 }
+
+.radio-second {
+  @apply checked:bg-second/20 checked:text-second checked:border-second;
+}

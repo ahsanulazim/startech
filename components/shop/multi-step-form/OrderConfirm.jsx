@@ -1,13 +1,21 @@
 "use client";
-import { FaBox, FaCheck, FaCreditCard, FaTruck } from "react-icons/fa6";
+import {
+  FaCheck,
+  FaCreditCard,
+  FaRegCreditCard,
+  FaTruck,
+} from "react-icons/fa6";
+import { RiArchiveFill, RiArchiveLine } from "react-icons/ri";
 import OrderForm from "./OrderForm";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Payment from "./Payment";
 import Thanks from "./Thanks";
 import Link from "next/link";
+import { SiteContext } from "@/app/context/MyContext";
 
 export default function OrderConfirm() {
   const [step, setStep] = useState(0);
+  const { total } = useContext(SiteContext);
 
   return (
     <>
@@ -21,7 +29,7 @@ export default function OrderConfirm() {
               Shipping
             </li>
             <li
-              className={`step ${
+              className={`step before:h-1 ${
                 step >= 1
                   ? "step-neutral before:bg-second"
                   : "before:bg-base-100"
@@ -32,12 +40,18 @@ export default function OrderConfirm() {
                   step >= 1 ? "bg-second" : "bg-base-100"
                 }`}
               >
-                {step <= 1 ? <FaCreditCard /> : <FaCheck />}
+                {step === 1 ? (
+                  <FaCreditCard />
+                ) : step < 1 ? (
+                  <FaRegCreditCard />
+                ) : (
+                  <FaCheck />
+                )}
               </span>
               Payment
             </li>
             <li
-              className={`step ${
+              className={`step before:h-1 ${
                 step >= 2
                   ? "step-neutral before:bg-second"
                   : "before:bg-base-100"
@@ -48,7 +62,13 @@ export default function OrderConfirm() {
                   step >= 2 ? "bg-second" : "bg-base-100"
                 }`}
               >
-                {step <= 2 ? <FaBox /> : <FaCheck />}
+                {step === 2 ? (
+                  <RiArchiveFill />
+                ) : step < 2 ? (
+                  <RiArchiveLine />
+                ) : (
+                  <FaCheck />
+                )}
               </span>
               Confirmation
             </li>
@@ -56,7 +76,7 @@ export default function OrderConfirm() {
         </div>
         <div className="bg-base-100 w-full max-w-xs mx-auto p-5 mt-5 rounded-md">
           {step === 0 && <OrderForm />}
-          {step === 1 && <Payment />}
+          {step === 1 && <Payment total={total} />}
           {step === 2 && <Thanks />}
           <div className="flex justify-center gap-5 max-w-xs mx-auto">
             <button
