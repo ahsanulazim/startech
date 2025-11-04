@@ -6,7 +6,7 @@ export default function Tabs({ description, title }) {
       <input
         type="radio"
         name="my_tabs_3"
-        className="tab"
+        className="tab max-sm:p-2 after:max-xs:text-xs"
         aria-label="Specification"
         defaultChecked
       />
@@ -17,7 +17,7 @@ export default function Tabs({ description, title }) {
       <input
         type="radio"
         name="my_tabs_3"
-        className="tab"
+        className="tab max-sm:p-2 after:max-xs:text-xs"
         aria-label="Description"
       />
       <div className="tab-content bg-base-100 border-base-300 p-6">
@@ -28,7 +28,7 @@ export default function Tabs({ description, title }) {
       <input
         type="radio"
         name="my_tabs_3"
-        className="tab"
+        className="tab max-sm:p-2 after:max-xs:text-xs"
         aria-label="Questions"
       />
       <div className="tab-content bg-base-100 border-base-300 p-6">
@@ -37,7 +37,7 @@ export default function Tabs({ description, title }) {
       <input
         type="radio"
         name="my_tabs_3"
-        className="tab"
+        className="tab max-sm:p-2 after:max-xs:text-xs"
         aria-label="Reviews"
       />
       <div className="tab-content bg-base-100 border-base-300 p-6">

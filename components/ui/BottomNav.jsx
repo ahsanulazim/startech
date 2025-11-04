@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { FaFaceSmile, FaFire, FaUser } from "react-icons/fa6";
 import { MdImportantDevices, MdLibraryAdd } from "react-icons/md";
 
@@ -22,10 +23,10 @@ export default function BottomNav() {
         <MdLibraryAdd className="size-5" />
         <span className="dock-label">Compare</span>
       </button>
-      <button>
+      <Link href="/login">
         <FaUser className="size-5" />
         <span className="dock-label">Account</span>
-      </button>
+      </Link>
     </div>
   );
 }
