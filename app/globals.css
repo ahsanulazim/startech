@@ -11,6 +11,7 @@
 
 @theme inline {
   --font-inter: var(--font-inter-tight);
+  --font-hindSiliguri: var(--font-hind-siliguri);
   --breakpoint-xxl: 82.5rem;
   --breakpoint-xs: 30rem;
   --breakpoint-2xs: 20rem;
@@ -66,4 +67,8 @@
 
 .radio-second {
   @apply checked:bg-second/20 checked:text-second checked:border-second;
+}
+
+:lang(bn) {
+  @apply font-hindSiliguri;
 }

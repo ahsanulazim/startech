@@ -1,8 +1,7 @@
-import { Inter_Tight } from "next/font/google";
+import { Inter_Tight, Hind_Siliguri } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/home/Navbar";
 import Fab from "@/components/ui/Fab";
-import { FaShoppingBasket } from "react-icons/fa";
 import CartDrawer from "@/components/shop/CartDrawer";
 import Compare from "@/components/shop/Compare";
 import MyContext from "./context/MyContext";
@@ -11,6 +10,11 @@ import Basket from "@/components/shop/Basket";
 const interTight = Inter_Tight({
   variable: "--font-inter-tight",
   subsets: ["latin"],
+});
+const hindSiliguri = Hind_Siliguri({
+  variable: "--font-hind-siliguri",
+  subsets: ["bengali"],
+  weight: ["400", "500", "700"],
 });
 
 export const metadata = {
@@ -22,7 +26,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={` ${interTight.variable} font-inter antialiased`}>
+      <body
+        className={` ${interTight.variable} ${hindSiliguri.variable} font-inter antialiased`}
+      >
         <MyContext>
           <Navbar>{children}</Navbar>
           <CartDrawer />

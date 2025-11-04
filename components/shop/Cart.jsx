@@ -26,33 +26,42 @@ export default function Cart() {
             <FaXmark />
           </label>
         </div>
-        <ul className={`flex-1 overflow-y-auto ${cartedProducts.length > 0 ? "" : "flex justify-center"}`}>
+        <ul
+          className={`flex-1 overflow-y-auto ${
+            cartedProducts.length > 0 ? "" : "flex justify-center"
+          }`}
+        >
           {/* Sidebar content here */}
-          {cartedProducts.length > 0 ? (cartedProducts.map((product) => (
-            <li
-              className="flex-row flex-nowrap items-start p-2 hover:bg-base-300"
-              key={product.id}
-            >
-              <div className="flex grow items-start p-0 hover:bg-transparent">
-                <img
-                  className="size-10 rounded-box aspect-square object-contain"
-                  src={product.image}
-                  alt={product.title}
-                />
-                <div className="text-pretty">
-                  <h4>{product.title}</h4>
-                  <p className="text-sm uppercase font-semibold">{`$${product.price
-                    } × ${product.quantity} = $${product.price * product.quantity
-                    }`}</p>
-                </div>
-              </div>
-              <button
-                className="btn btn-square btn-error btn-sm"
-                onClick={() => removeFromCart(product.id)}
+          {cartedProducts.length > 0 ? (
+            cartedProducts.map((product) => (
+              <li
+                className="flex-row flex-nowrap items-start p-2 hover:bg-base-300"
+                key={product.id}
               >
-                <FaTrash />
-              </button>
-            </li>))
+                <div className="flex grow items-start p-0 hover:bg-transparent">
+                  <img
+                    className="size-10 rounded-box aspect-square object-contain"
+                    src={product.image}
+                    alt={product.title}
+                  />
+                  <div className="text-pretty">
+                    <h4>{product.title}</h4>
+                    <p className="text-sm uppercase font-semibold">
+                      <span lang="bn">৳</span>
+                      {product.price} × {product.quantity} ={" "}
+                      <span lang="bn">৳</span>
+                      {product.price * product.quantity}
+                    </p>
+                  </div>
+                </div>
+                <button
+                  className="btn btn-square btn-error btn-sm"
+                  onClick={() => removeFromCart(product.id)}
+                >
+                  <FaTrash />
+                </button>
+              </li>
+            ))
           ) : (
             <li className="justify-center">Empty Cart</li>
           )}
@@ -71,12 +80,18 @@ export default function Cart() {
           <div className="my-2">
             <div className="flex *:flex-1 *:text-right px-2">
               <div className="text-black/60">Sub Total</div>
-              <div className="font-bold">৳{total}</div>
+              <div className="font-bold">
+                <span lang="bn">৳</span>
+                {total}
+              </div>
             </div>
             <div className="divider my-0"></div>
             <div className="flex *:flex-1 *:text-right px-2">
               <div className="text-black/60">Total</div>
-              <div className="font-bold">৳{total}</div>
+              <div className="font-bold">
+                <span lang="bn">৳</span>
+                {total}
+              </div>
             </div>
           </div>
           <Link href="/cart">

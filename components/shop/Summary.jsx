@@ -10,11 +10,17 @@ export default function Summary({ total }) {
         <div className="max-md:flex max-md:items-center max-md:justify-end max-md: gap-5">
           <div className="max-md:hidden flex justify-between mb-3 text-sm lg:text-base">
             <div className="text-black/60">Sub Total</div>
-            <div className="font-bold">৳{total}</div>
+            <div className="font-bold">
+              <span lang="bn">৳</span>
+              {total}
+            </div>
           </div>
           <div className="flex justify-between md:mb-3 gap-2 text-sm lg:text-base">
             <div className="text-black/60">Total</div>
-            <div className="font-bold">৳{total}</div>
+            <div className="font-bold">
+              <span lang="bn">৳</span>
+              {total}
+            </div>
           </div>
           <Link href="/cart/checkout">
             <button className="btn btn-primary btn-filled-style md:w-full">

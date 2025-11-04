@@ -35,7 +35,10 @@ export default function Payment({ total }) {
             <div className="divider my-0"></div>
             <div className="flex justify-between gap-5 text-base">
               <p>Total</p>
-              <p className="text-right font-semibold">{total}</p>
+              <p className="text-right font-semibold">
+                <span lang="bn">৳</span>
+                {total}
+              </p>
             </div>
           </div>
         </div>

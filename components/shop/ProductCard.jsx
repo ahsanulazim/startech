@@ -18,7 +18,8 @@ export default function ProductCard({ product }) {
         <p className="line-clamp-3 text-gray-600">{product.description}</p>
         <div className="card-actions">
           <p className="text-lg text-accent font-semibold text-center">
-            ${product.price}
+            <span lang="bn">৳</span>
+            {product.price}
           </p>
           <Buy className="w-full btn-soft btn-main-style" pid={product.id} />
         </div>

@@ -32,11 +32,12 @@ export default function ComparisonCard({ selectedIds }) {
                   className="w-full object-contain"
                 />
               </figure>
-              <div className="h-12 xs:h-16">
-                <h3 className="text-xs xs:text-sm w-full">{p.title}</h3>
-              </div>
+              <h3 className="text-xs xs:text-sm w-full line-clamp-1">
+                {p.title}
+              </h3>
               <p className="text-accent font-bold max-xs:text-sm text-center">
-                ${p.price}
+                <span lang="bn">৳</span>
+                {p.price}
               </p>
             </div>
           ))
