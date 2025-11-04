@@ -2,9 +2,10 @@ import { useState } from "react";
 import { FaPenToSquare } from "react-icons/fa6";
 
 export default function Payment({ total }) {
-  const [isChecked, setChecked] = useState("bkash");
+  const [isChecked, setChecked] = useState("taka");
 
   const paymentMethods = [
+    { id: "taka", label: "Cash on Delivery", icon: "/payment/taka.svg" },
     { id: "bkash", label: "bKash", icon: "/payment/bkash.svg" },
     { id: "rocket", label: "Rocket", icon: "/payment/rocket.svg" },
     { id: "nagad", label: "Nagad", icon: "/payment/nagad.svg" },
@@ -62,8 +63,9 @@ export default function Payment({ total }) {
                     type="radio"
                     name="payment-method"
                     value={method.id}
-                    checked={isChecked === method.id}
+                    checked={isChecked === method.id ? true : false}
                     className="radio radio-xs radio-second"
+                    readOnly
                   />
                 </li>
               ))}
