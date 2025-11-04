@@ -10,7 +10,7 @@ export default function OrderForm({ setOrderData, error, orderData }) {
   };
 
   return (
-    <form className="fieldset w-full max-w-xs mx-auto mb-5">
+    <form className="fieldset w-full mb-5">
       <h1 className="text-center text-xl font-semibold">Your Details</h1>
 
       <label className="label" htmlFor="name">
@@ -19,7 +19,7 @@ export default function OrderForm({ setOrderData, error, orderData }) {
       <input
         type="text"
         name="name"
-        className="input"
+        className="input w-full"
         onChange={handleChange}
         value={orderData.name || ""}
       />
@@ -33,7 +33,7 @@ export default function OrderForm({ setOrderData, error, orderData }) {
       <input
         type="text"
         name="address"
-        className="input"
+        className="input w-full"
         onChange={handleChange}
         value={orderData.address || ""}
       />
@@ -46,9 +46,9 @@ export default function OrderForm({ setOrderData, error, orderData }) {
       </label>
       <select
         name="district"
-        className="select"
+        className="select w-full"
         onChange={handleChange}
-        value={orderData.district || "Select Disctrict"}
+        value={orderData.district || "Select District"}
       >
         <option disabled>Select District</option>
         <option>Dhaka</option>
@@ -70,7 +70,7 @@ export default function OrderForm({ setOrderData, error, orderData }) {
       <input
         type="tel"
         name="phone"
-        className="input"
+        className="input w-full"
         onChange={handleChange}
         value={orderData.phone || ""}
       />
@@ -84,7 +84,7 @@ export default function OrderForm({ setOrderData, error, orderData }) {
       <input
         type="email"
         name="email"
-        className="input"
+        className="input w-full"
         onChange={handleChange}
         value={orderData.email || ""}
       />

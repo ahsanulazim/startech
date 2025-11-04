@@ -105,7 +105,7 @@ export default function OrderConfirm() {
             </li>
           </ul>
         </div>
-        <div className="bg-base-100 w-full max-w-xs mx-auto p-5 mt-5 rounded-md">
+        <div className="bg-base-100 w-full max-w-sm mx-auto p-5 mt-5 rounded-md">
           {step === 0 && (
             <OrderForm
               setOrderData={setOrderData}
@@ -113,7 +113,7 @@ export default function OrderConfirm() {
               orderData={orderData}
             />
           )}
-          {step === 1 && <Payment total={total} />}
+          {step === 1 && <Payment total={total} orderData={orderData} />}
           {step === 2 && <Thanks />}
 
           <div className="flex justify-center gap-5 max-w-xs mx-auto">

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { FaPenToSquare } from "react-icons/fa6";
 
-export default function Payment({ total }) {
+export default function Payment({ total, orderData }) {
   const [isChecked, setChecked] = useState("taka");
 
   const paymentMethods = [
@@ -25,8 +25,8 @@ export default function Payment({ total }) {
           <div className="card-body p-5">
             <div className="flex justify-between items-center gap-5">
               <div>
-                <h2 className="card-title">Mr Kashem</h2>
-                <p>Mirpur-14, Dhaka-1206</p>
+                <h2 className="card-title">{orderData.name}</h2>
+                <p>{orderData.address}</p>
               </div>
               <button className="btn btn-sm btn-filled-style">
                 <FaPenToSquare />
