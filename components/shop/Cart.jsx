@@ -2,12 +2,12 @@
 
 import { SiteContext } from "@/app/context/MyContext";
 import Link from "next/link";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { FaTrash, FaXmark } from "react-icons/fa6";
+import Promo from "./Promo";
 
 export default function Cart() {
   const { cartedProducts, removeFromCart, total } = useContext(SiteContext);
-  const [promo, setPromo] = useState("");
 
   return (
     <div className="drawer-side z-50">
@@ -28,8 +28,9 @@ export default function Cart() {
           </label>
         </div>
         <ul
-          className={`flex-1 overflow-y-auto ${cartedProducts.length > 0 ? "" : "flex justify-center"
-            }`}
+          className={`flex-1 overflow-y-auto ${
+            cartedProducts.length > 0 ? "" : "flex justify-center"
+          }`}
         >
           {/* Sidebar content here */}
           {cartedProducts.length > 0 ? (
@@ -67,19 +68,7 @@ export default function Cart() {
           )}
         </ul>
         <footer>
-          <form className="fieldset bg-base-300 border-base-300 rounded-box w-xs border p-2">
-            <div className="join">
-              <input
-                type="text"
-                className="input join-item focus:outline-none"
-                placeholder="Promo Code"
-                name="promo"
-                value={promo}
-                onChange={(e) => setPromo(e.target.value)}
-              />
-              <button className="btn btn-primary join-item" disabled={!promo.trim()}>Apply</button>
-            </div>
-          </form>
+          <Promo />
           <div className="my-2">
             <div className="flex *:flex-1 *:text-right px-2">
               <div className="text-black/60">Sub Total</div>
@@ -97,16 +86,23 @@ export default function Cart() {
               </div>
             </div>
           </div>
-          {
-            cartedProducts.length > 0 ? <Link href="/cart">
-              <button className="btn w-full bg-accent border-accent rounded-none text-white">
+          {cartedProducts.length > 0 ? (
+            <Link href="/cart">
+              <button
+                className="btn w-full bg-accent border-accent rounded-none text-white"
+                onClick={() => {
+                  const drawer = document.getElementById("my-drawer-5");
+                  if (drawer) drawer.checked = false;
+                }}
+              >
                 Checkout
               </button>
-            </Link> : <button className="btn w-full btn-primary rounded-none" disabled>
+            </Link>
+          ) : (
+            <button className="btn w-full btn-primary rounded-none" disabled>
               Checkout
             </button>
-          }
-
+          )}
         </footer>
       </div>
     </div>

@@ -9,11 +9,13 @@ export default function MyContext({ children }) {
   const [products, setProducts] = useState(null);
   const [cartedProducts, setCartedProducts] = useState([]);
   const [currentUser, setCurrentUser] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const stored = localStorage.getItem("cartedProducts");
     if (stored) {
       setCartedProducts(JSON.parse(stored));
+      setLoading(false);
     }
   }, []);
 
@@ -72,7 +74,6 @@ export default function MyContext({ children }) {
     );
   };
 
-
   //User Observer
 
   useEffect(() => {
@@ -94,7 +95,6 @@ export default function MyContext({ children }) {
 
   console.log(currentUser);
 
-
   const data = {
     products,
     addToCart,
@@ -103,7 +103,8 @@ export default function MyContext({ children }) {
     total,
     updateQuantity,
     totalQuantity,
-    currentUser
+    currentUser,
+    loading,
   };
 
   return <SiteContext value={data}>{children}</SiteContext>;
