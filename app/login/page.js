@@ -23,7 +23,7 @@ export default function Login() {
   }, [currentUser, router]);
 
   if (loading) {
-    return <div>loading login...</div>;
+    return null;
   }
 
 
