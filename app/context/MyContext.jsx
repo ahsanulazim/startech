@@ -80,18 +80,19 @@ export default function MyContext({ children }) {
       if (user) {
         // User is signed in, see docs for a list of available properties
         // https://firebase.google.com/docs/reference/js/auth.user
-        setUser(user);
-
+        setCurrentUser(user);
         // ...
       } else {
         // User is signed out
         // ...
         setCurrentUser(null);
       }
-      setLoading(false);
+      // setLoading(false);
     });
     return () => observer();
   }, []);
+
+  console.log(currentUser);
 
 
   const data = {
@@ -102,6 +103,7 @@ export default function MyContext({ children }) {
     total,
     updateQuantity,
     totalQuantity,
+    currentUser
   };
 
   return <SiteContext value={data}>{children}</SiteContext>;
