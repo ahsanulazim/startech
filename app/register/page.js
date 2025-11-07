@@ -13,16 +13,16 @@ export default function Register() {
   const { currentUser } = useContext(SiteContext);
 
   useEffect(() => {
-    // Once context is hydrated, stop loading
-    setLoading(false);
-
+    if (currentUser === undefined) return; // still loading context
     if (currentUser) {
-      router.push("/dashboard");
+      router.replace("/dashboard");
+    } else {
+      setLoading(false);
     }
   }, [currentUser, router]);
 
   if (loading) {
-    return <div>loading...</div>;
+    return null;
   }
 
   if (!currentUser) {
