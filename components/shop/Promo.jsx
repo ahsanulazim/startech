@@ -6,7 +6,7 @@ export default function Promo() {
   const [promo, setPromo] = useState("");
 
   return (
-    <form className="fieldset bg-base-300 border-base-300 rounded-box w-xs border p-2">
+    <form className="fieldset w-full max-w-xs">
       <div className="join">
         <input
           type="text"
@@ -16,7 +16,11 @@ export default function Promo() {
           value={promo}
           onChange={(e) => setPromo(e.target.value)}
         />
-        <button className="btn btn-primary join-item" disabled={!promo.trim()}>
+        <button
+          className="btn btn-primary join-item"
+          disabled={!promo.trim()}
+          onClick={(e) => e.preventDefault()}
+        >
           Apply
         </button>
       </div>

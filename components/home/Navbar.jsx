@@ -1,45 +1,14 @@
 import Link from "next/link";
 import Drawer from "./Drawer";
 import Search from "../ui/Search";
-import {
-  FaFireAlt,
-  FaSearch,
-  FaShoppingBasket,
-  FaSmile,
-  FaUser,
-} from "react-icons/fa";
-import Profile from "../ui/Profile";
+import { FaSearch } from "react-icons/fa";
 import Menu from "./Menu";
 import Footer from "./Footer";
 import BottomNav from "../ui/BottomNav";
 import Basket from "../shop/Basket";
-import Summary from "../shop/Summary";
+import ImportantLinks from "../ui/ImportantLinks";
 
 export default function Navbar({ children }) {
-  const impLinks = [
-    {
-      id: 1,
-      title: "Offers",
-      subtitle: "Latest Deals",
-      href: "#",
-      icon: <FaFireAlt />,
-    },
-    {
-      id: 2,
-      title: "Happy Hours",
-      subtitle: "Special Deals",
-      href: "#",
-      icon: <FaSmile />,
-    },
-    {
-      id: 3,
-      title: "Account",
-      subtitle: "Login or Register",
-      href: "/login",
-      icon: <FaUser />,
-    },
-  ];
-
   return (
     <div className="drawer">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -81,17 +50,7 @@ export default function Navbar({ children }) {
               <Search />
             </div>
             <div className="navbar-end lg:w-auto">
-              <div className="hidden lg:flex gap-x-5">
-                {impLinks.map((links) => (
-                  <Profile
-                    key={links.id}
-                    icon={links.icon}
-                    title={links.title}
-                    subtitle={links.subtitle}
-                    href={links.href}
-                  />
-                ))}
-              </div>
+              <ImportantLinks />
               <Link href="#" className="hidden lg:block ml-5">
                 <button className="btn animatedBtn">PC Builder</button>
               </Link>

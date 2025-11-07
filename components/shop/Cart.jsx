@@ -68,7 +68,9 @@ export default function Cart() {
           )}
         </ul>
         <footer>
-          <Promo />
+          <div className="p-2">
+            <Promo />
+          </div>
           <div className="my-2">
             <div className="flex *:flex-1 *:text-right px-2">
               <div className="text-black/60">Sub Total</div>

@@ -1,5 +1,5 @@
 "use client";
-import auth from "@/firebase/firebase";
+import { auth } from "@/firebase/firebase";
 import { onAuthStateChanged } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 
@@ -92,8 +92,6 @@ export default function MyContext({ children }) {
     });
     return () => observer();
   }, []);
-
-  console.log(currentUser);
 
   const data = {
     products,
