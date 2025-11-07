@@ -82,6 +82,7 @@ export default function MyContext({ children }) {
         // User is signed in, see docs for a list of available properties
         // https://firebase.google.com/docs/reference/js/auth.user
         setCurrentUser(user);
+        localStorage.setItem("user", JSON.stringify(user));
         // ...
       } else {
         // User is signed out
@@ -92,6 +93,16 @@ export default function MyContext({ children }) {
     });
     return () => observer();
   }, []);
+
+
+  // Monitor auth state
+  useEffect(() => {
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      setCurrentUser(JSON.parse(storedUser));
+    }
+  }, []);
+
 
   const data = {
     products,
