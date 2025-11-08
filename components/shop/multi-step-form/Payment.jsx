@@ -35,8 +35,9 @@ export default function Payment({ total, orderData }) {
                 <FaPenToSquare />
               </button>
             </div>
-            <Promo />
+
             <div className="divider my-0"></div>
+            <Promo />
             <div className="flex justify-between gap-5 text-base">
               <p>Total</p>
               <p className="text-right font-semibold">
