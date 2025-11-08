@@ -6,6 +6,7 @@ import { createContext, useEffect, useState } from "react";
 export const SiteContext = createContext();
 
 export default function MyContext({ children }) {
+  const serverUrl = process.env.NEXT_PUBLIC_API_BASE;
   const [products, setProducts] = useState(null);
   const [cartedProducts, setCartedProducts] = useState([]);
   const [currentUser, setCurrentUser] = useState(null);
@@ -94,7 +95,6 @@ export default function MyContext({ children }) {
     return () => observer();
   }, []);
 
-
   // Monitor auth state
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
@@ -102,7 +102,6 @@ export default function MyContext({ children }) {
       setCurrentUser(JSON.parse(storedUser));
     }
   }, []);
-
 
   const data = {
     products,
@@ -114,6 +113,7 @@ export default function MyContext({ children }) {
     totalQuantity,
     currentUser,
     loading,
+    serverUrl,
   };
 
   return <SiteContext value={data}>{children}</SiteContext>;

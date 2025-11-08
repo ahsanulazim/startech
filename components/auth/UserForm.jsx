@@ -6,11 +6,13 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
 } from "firebase/auth";
-import { Activity, useState } from "react";
+import { Activity, useContext, useState } from "react";
 import { auth, google } from "@/firebase/firebase";
 import { useRouter } from "next/navigation";
+import { SiteContext } from "@/app/context/MyContext";
 
 export default function UserForm({ login }) {
+  const { serverUrl } = useContext(SiteContext);
   const [loading, setLoading] = useState(false);
   const [errorMassage, setErrorMassage] = useState(false);
   const router = useRouter();
@@ -49,6 +51,42 @@ export default function UserForm({ login }) {
     const phone = e.target.phone.value;
     const email = e.target.email.value;
     const password = e.target.password.value;
+
+    fetch(`${serverUrl}/users`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name, email, phone, password }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) {
+          // Send data to Firebase
+          createUserWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+              // Signed up
+              setLoading(false);
+              router.push("/dashboard");
+
+              // ...
+            })
+            .catch((error) => {
+              setLoading(false);
+              const errorCode = error.code;
+              const errorMessage = error.message;
+              // ..
+              console.log(errorMessage);
+            });
+        } else {
+          setLoading(false);
+          alert("Failed to add user");
+        }
+      })
+      .catch(() => {
+        setLoading(false);
+        alert("Server error");
+      });
+
+    //Register User Ends
 
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {

@@ -54,13 +54,13 @@ export default function OrderForm({ setOrderData, error, orderData }) {
 
       <label className="label" htmlFor="district">
         District
-        <Required />
       </label>
       <select
         name="district"
         className="select w-full"
         onChange={handleChange}
         value={orderData.district || "Select District"}
+        required
       >
         <option disabled>Select District</option>
         <option>Dhaka</option>
