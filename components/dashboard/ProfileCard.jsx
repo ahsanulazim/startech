@@ -18,7 +18,7 @@ export default function ProfileCard({ user }) {
       <div className="card-body flex-row gap-5 justify-between items-center">
         <div>
           <h2 className="card-title">Hello</h2>
-          <p>{user.name ? user.name : "User"}</p>
+          <p>{user ? user.name : "User"}</p>
         </div>
         <div className="card-actions justify-end">
           <button className="btn btn-primary" onClick={handleLogout}>

@@ -17,6 +17,7 @@ export default function UserForm({ login }) {
   const { userRegister } = useRegister();
   const { serverUrl, setCurrentUser } = useContext(SiteContext);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
   const router = useRouter();
 
   //login user logic
@@ -25,7 +26,7 @@ export default function UserForm({ login }) {
     setLoading(true);
     const email = e.target.email.value;
     const password = e.target.password.value;
-    userLogin(email, password, setLoading);
+    userLogin(email, password, setLoading, setError);
   };
 
   //Register user logic
@@ -181,7 +182,6 @@ export default function UserForm({ login }) {
           name="email"
           required
         />
-
         <label className="label" htmlFor="password">
           Password
         </label>
@@ -193,8 +193,8 @@ export default function UserForm({ login }) {
           required
         />
 
-        <Activity mode={errorMassage ? "visible" : "hidden"}>
-          <div role="alert" className="alert alert-error mt-2">
+        <Activity mode={error ? "visible" : "hidden"}>
+          <div role="alert" className="alert alert-error alert-soft mt-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-6 w-6 shrink-0 stroke-current"
@@ -208,7 +208,7 @@ export default function UserForm({ login }) {
                 d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
               />
             </svg>
-            <span>Wrong Email/Password</span>
+            <span>{errorMassage}</span>
           </div>
         </Activity>
 
