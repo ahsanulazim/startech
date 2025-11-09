@@ -1,7 +1,7 @@
 "use client";
 
 import OrderForm from "./OrderForm";
-import { useContext, useState } from "react";
+import { Activity, useContext, useState } from "react";
 import Payment from "./Payment";
 import Thanks from "./Thanks";
 import Link from "next/link";
@@ -50,15 +50,15 @@ export default function OrderConfirm() {
           <Steps step={step} />
         </div>
         <div className="bg-base-100 w-full max-w-sm mx-auto p-5 mt-5 rounded-md">
-          {step === 0 && (
-            <OrderForm
-              setOrderData={setOrderData}
-              error={error}
-              orderData={orderData}
-            />
-          )}
-          {step === 1 && <Payment total={total} orderData={orderData} />}
-          {step === 2 && <Thanks />}
+          <Activity mode={step === 0 ? "visible" : "hidden"}>
+            <OrderForm setOrderData={setOrderData} error={error} />
+          </Activity>
+          <Activity mode={step === 1 ? "visible" : "hidden"}>
+            <Payment total={total} orderData={orderData} />
+          </Activity>
+          <Activity mode={step === 2 ? "visible" : "hidden"}>
+            <Thanks />
+          </Activity>
 
           <div className="flex justify-center gap-5 max-w-xs mx-auto">
             <button

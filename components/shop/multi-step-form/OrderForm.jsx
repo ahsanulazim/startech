@@ -2,7 +2,7 @@ import { Activity } from "react";
 import Required from "./Required";
 import Link from "next/link";
 
-export default function OrderForm({ setOrderData, error, orderData }) {
+export default function OrderForm({ setOrderData, error }) {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setOrderData((prev) => ({
@@ -31,7 +31,6 @@ export default function OrderForm({ setOrderData, error, orderData }) {
         name="name"
         className="input w-full"
         onChange={handleChange}
-        value={orderData.name || ""}
       />
       <Activity when={!!error?.name}>
         <p className="text-red-500 text-sm">{error.name}</p>
@@ -46,7 +45,6 @@ export default function OrderForm({ setOrderData, error, orderData }) {
         name="address"
         className="input w-full"
         onChange={handleChange}
-        value={orderData.address || ""}
       />
       <Activity when={!!error?.address}>
         <p className="text-red-500 text-sm">{error.address}</p>
@@ -59,7 +57,6 @@ export default function OrderForm({ setOrderData, error, orderData }) {
         name="district"
         className="select w-full"
         onChange={handleChange}
-        value={orderData.district || "Select District"}
         required
       >
         <option disabled>Select District</option>
@@ -85,7 +82,6 @@ export default function OrderForm({ setOrderData, error, orderData }) {
         name="phone"
         className="input w-full"
         onChange={handleChange}
-        value={orderData.phone || ""}
       />
       <Activity when={!!error?.phone}>
         <p className="text-red-500 text-sm">{error.phone}</p>
@@ -99,7 +95,6 @@ export default function OrderForm({ setOrderData, error, orderData }) {
         name="email"
         className="input w-full"
         onChange={handleChange}
-        value={orderData.email || ""}
       />
       <Activity when={!!error?.email}>
         <p className="text-red-500 text-sm">{error.email}</p>

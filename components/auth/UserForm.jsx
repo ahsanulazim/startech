@@ -87,22 +87,6 @@ export default function UserForm({ login }) {
       });
 
     //Register User Ends
-
-    createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // Signed up
-        setLoading(false);
-        router.push("/dashboard");
-
-        // ...
-      })
-      .catch((error) => {
-        setLoading(false);
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        // ..
-        console.log(errorMessage);
-      });
   };
 
   //handle Google Login
