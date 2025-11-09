@@ -1,24 +1,16 @@
 "use client";
 import Link from "next/link";
-import {
-  createUserWithEmailAndPassword,
-  GoogleAuthProvider,
-  signInWithPopup,
-} from "firebase/auth";
 import { Activity, useContext, useState } from "react";
-import { auth, google } from "@/firebase/firebase";
-import { useRouter } from "next/navigation";
-import { SiteContext } from "@/app/context/MyContext";
 import useLogin from "./useLogin";
 import useRegister from "./useRegister";
+import useGoogle from "./useGoogle";
 
 export default function UserForm({ login }) {
   const { userLogin, errorMassage } = useLogin();
   const { userRegister } = useRegister();
-  const { serverUrl, setCurrentUser } = useContext(SiteContext);
+  const { handleGoogle } = useGoogle();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-  const router = useRouter();
 
   //login user logic
   const handleLogin = (e) => {
@@ -39,52 +31,6 @@ export default function UserForm({ login }) {
     const password = e.target.password.value;
     const google = false;
     userRegister(name, email, phone, google, password, setLoading);
-  };
-
-  //handle Google Login
-
-  const handleGoogle = () => {
-    signInWithPopup(auth, google)
-      .then((result) => {
-        // This gives you a Google Access Token. You can use it to access the Google API.
-        const credential = GoogleAuthProvider.credentialFromResult(result);
-        const token = credential.accessToken;
-        // The signed-in user info.
-        const user = result.user;
-        const email = user.email;
-        fetch(`${serverUrl}/users/${email}`)
-          .then(async (res) => {
-            if (res.status === 404) {
-              // User not found, create
-              const createUser = await fetch(`${serverUrl}/users`, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                  email,
-                  name: user.displayName,
-                  phone: user.phoneNumber,
-                  google: true,
-                }),
-              });
-              return await createUser.json();
-            } else {
-              return res.json();
-            }
-          })
-          .then((data) => {
-            setCurrentUser(data);
-            localStorage.setItem("user", JSON.stringify(data));
-            router.push("/dashboard");
-          });
-      })
-      .catch((error) => {
-        // Handle Errors here.
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        // The AuthCredential type that was used.
-        const credential = GoogleAuthProvider.credentialFromError(error);
-        // ...
-      });
   };
 
   return (

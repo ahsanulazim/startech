@@ -11,7 +11,7 @@ export default function useLogin() {
 
   const userLogin = async (email, password, setLoading, setError) => {
     try {
-      const res = await fetch(`${serverUrl}/users/${email}`);
+      const res = await fetch(`${serverUrl}/users/email/${email}`);
       if (!res.ok) {
         //When there are no user
         // handle 404 or other errors gracefully

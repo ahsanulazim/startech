@@ -1,8 +1,3 @@
-export default function Dashboard() {
-
-  return (
-
-    <>Dashboard</>
-
-  );
+export default function page() {
+  return <>Dashboard</>;
 }

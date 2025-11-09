@@ -75,6 +75,14 @@ export default function MyContext({ children }) {
     );
   };
 
+  // Monitor auth state
+  useEffect(() => {
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      setCurrentUser(JSON.parse(storedUser));
+    }
+  }, []);
+
   //User Observer
 
   useEffect(() => {
@@ -84,7 +92,7 @@ export default function MyContext({ children }) {
         // https://firebase.google.com/docs/reference/js/auth.user
         const email = user.email;
 
-        fetch(`${serverUrl}/users/${email}`)
+        fetch(`${serverUrl}/users/email/${email}`)
           .then((res) => res.json())
           .then((data) => {
             setCurrentUser(data);
@@ -102,14 +110,6 @@ export default function MyContext({ children }) {
       // setLoading(false);
     });
     return () => observer();
-  }, []);
-
-  // Monitor auth state
-  useEffect(() => {
-    const storedUser = localStorage.getItem("user");
-    if (storedUser) {
-      setCurrentUser(JSON.parse(storedUser));
-    }
   }, []);
 
   const data = {
