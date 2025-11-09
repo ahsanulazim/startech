@@ -16,7 +16,7 @@ export default function Home() {
       <Featured />
       <Comparison />
       <Location />
-      <FrdProducts />
+      {/* <FrdProducts /> */}
       <Accordion />
     </main>
   );

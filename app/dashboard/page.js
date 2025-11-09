@@ -1,3 +1,5 @@
 export default function page() {
-  return <>Dashboard</>;
+  return <main className="bg-base-300 flex-1">
+    Home
+  </main>;
 }

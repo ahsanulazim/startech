@@ -4,8 +4,8 @@ import Navbar from "@/components/home/Navbar";
 import Fab from "@/components/ui/Fab";
 import CartDrawer from "@/components/shop/CartDrawer";
 import Compare from "@/components/shop/Compare";
-import MyContext from "./context/MyContext";
 import Basket from "@/components/shop/Basket";
+import MyContext from "../context/MyContext";
 
 const interTight = Inter_Tight({
   variable: "--font-inter-tight",
