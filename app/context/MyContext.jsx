@@ -82,8 +82,17 @@ export default function MyContext({ children }) {
       if (user) {
         // User is signed in, see docs for a list of available properties
         // https://firebase.google.com/docs/reference/js/auth.user
-        setCurrentUser(user);
-        localStorage.setItem("user", JSON.stringify(user));
+        const email = user.email;
+
+        fetch(`${serverUrl}/users/${email}`)
+          .then((res) => res.json())
+          .then((data) => {
+            setCurrentUser(data);
+            localStorage.setItem("user", JSON.stringify(data));
+          })
+          .catch((err) => {
+            setCurrentUser(null);
+          });
         // ...
       } else {
         // User is signed out
@@ -114,6 +123,7 @@ export default function MyContext({ children }) {
     currentUser,
     loading,
     serverUrl,
+    setCurrentUser,
   };
 
   return <SiteContext value={data}>{children}</SiteContext>;

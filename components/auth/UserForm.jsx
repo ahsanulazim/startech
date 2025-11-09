@@ -3,47 +3,32 @@ import Link from "next/link";
 import {
   createUserWithEmailAndPassword,
   GoogleAuthProvider,
-  signInWithEmailAndPassword,
   signInWithPopup,
 } from "firebase/auth";
 import { Activity, useContext, useState } from "react";
 import { auth, google } from "@/firebase/firebase";
 import { useRouter } from "next/navigation";
 import { SiteContext } from "@/app/context/MyContext";
+import useLogin from "./useLogin";
+import useRegister from "./useRegister";
 
 export default function UserForm({ login }) {
-  const { serverUrl } = useContext(SiteContext);
+  const { userLogin, errorMassage } = useLogin();
+  const { userRegister } = useRegister();
+  const { serverUrl, setCurrentUser } = useContext(SiteContext);
   const [loading, setLoading] = useState(false);
-  const [errorMassage, setErrorMassage] = useState(false);
   const router = useRouter();
 
   //login user logic
-
   const handleLogin = (e) => {
     e.preventDefault();
     setLoading(true);
     const email = e.target.email.value;
     const password = e.target.password.value;
-
-    signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        setErrorMassage(false);
-        setLoading(false);
-        // Signed in
-        router.push("/dashboard");
-        // ...
-      })
-      .catch((error) => {
-        setLoading(false);
-        setErrorMassage(true);
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log(error);
-      });
+    userLogin(email, password, setLoading);
   };
 
   //Register user logic
-
   const handleRegister = (e) => {
     e.preventDefault();
     setLoading(true);
@@ -51,42 +36,8 @@ export default function UserForm({ login }) {
     const phone = e.target.phone.value;
     const email = e.target.email.value;
     const password = e.target.password.value;
-
-    fetch(`${serverUrl}/users`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name, email, phone, password }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.success) {
-          // Send data to Firebase
-          createUserWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
-              // Signed up
-              setLoading(false);
-              router.push("/dashboard");
-
-              // ...
-            })
-            .catch((error) => {
-              setLoading(false);
-              const errorCode = error.code;
-              const errorMessage = error.message;
-              // ..
-              console.log(errorMessage);
-            });
-        } else {
-          setLoading(false);
-          alert("Failed to add user");
-        }
-      })
-      .catch(() => {
-        setLoading(false);
-        alert("Server error");
-      });
-
-    //Register User Ends
+    const google = false;
+    userRegister(name, email, phone, google, password, setLoading);
   };
 
   //handle Google Login
@@ -99,11 +50,31 @@ export default function UserForm({ login }) {
         const token = credential.accessToken;
         // The signed-in user info.
         const user = result.user;
-        console.log(user);
-        router.push("/dashboard");
-
-        // IdP data available using getAdditionalUserInfo(result)
-        // ...
+        const email = user.email;
+        fetch(`${serverUrl}/users/${email}`)
+          .then(async (res) => {
+            if (res.status === 404) {
+              // User not found, create
+              const createUser = await fetch(`${serverUrl}/users`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                  email,
+                  name: user.displayName,
+                  phone: user.phoneNumber,
+                  google: true,
+                }),
+              });
+              return await createUser.json();
+            } else {
+              return res.json();
+            }
+          })
+          .then((data) => {
+            setCurrentUser(data);
+            localStorage.setItem("user", JSON.stringify(data));
+            router.push("/dashboard");
+          });
       })
       .catch((error) => {
         // Handle Errors here.
