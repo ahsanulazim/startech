@@ -21,7 +21,7 @@ export default function useGoogle() {
           .then(async (res) => {
             if (res.status === 404) {
               // User not found, create
-              const createUser = await fetch(`${serverUrl}/users`, {
+              await fetch(`${serverUrl}/users`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
@@ -31,12 +31,13 @@ export default function useGoogle() {
                   google: true,
                 }),
               });
-              return await createUser.json();
+              return await fetch(`${serverUrl}/users/email/${email}`).then((r) => r.json());
             } else {
               return res.json();
             }
           })
           .then((data) => {
+            console.log(data);
             setCurrentUser(data);
             localStorage.setItem("user", JSON.stringify(data));
             router.push("/dashboard");

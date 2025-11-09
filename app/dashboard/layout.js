@@ -32,7 +32,7 @@ export default function Dashboard({ children }) {
         <Breadcrumbs title="Dashboard" />
       </Section>
       <Section className={"pt-0"}>
-        <ProfileCard user={currentUser} />
+        <ProfileCard />
       </Section>
       <Section>
         <div role="tablist" className="tabs tabs-box rounded-b-none">
@@ -46,18 +46,16 @@ export default function Dashboard({ children }) {
           <Link
             href="/dashboard/orders"
             role="tab"
-            className={`tab ${
-              pathname === "/dashboard/orders" ? "tab-active" : ""
-            }`}
+            className={`tab ${pathname === "/dashboard/orders" ? "tab-active" : ""
+              }`}
           >
             Order
           </Link>
           <Link
             href="/dashboard/settings"
             role="tab"
-            className={`tab ${
-              pathname === "/dashboard/settings" ? "tab-active" : ""
-            }`}
+            className={`tab ${pathname === "/dashboard/settings" ? "tab-active" : ""
+              }`}
           >
             Settings
           </Link>
