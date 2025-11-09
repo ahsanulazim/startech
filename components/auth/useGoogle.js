@@ -17,7 +17,7 @@ export default function useGoogle() {
         // The signed-in user info.
         const user = result.user;
         const email = user.email;
-        fetch(`${serverUrl}/users/${email}`)
+        fetch(`${serverUrl}/users/email/${email}`)
           .then(async (res) => {
             if (res.status === 404) {
               // User not found, create
