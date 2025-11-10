@@ -2,11 +2,16 @@
 
 import { auth } from "@/firebase/firebase";
 import { signOut } from "firebase/auth";
+import { useRouter } from "next/navigation";
 
 export default function ProfileDropdown() {
+  const router = useRouter();
+
   const handleLogout = () => {
     signOut(auth)
-      .then(() => {})
+      .then(() => {
+        router.push("/");
+      })
       .catch((error) => {
         alert(error);
       });
