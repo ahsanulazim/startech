@@ -1,7 +1,7 @@
 import { Inter_Tight, Hind_Siliguri } from "next/font/google";
 import "../(mainLayout)/globals.css";
 import Dashboard from "@/components/dashboard/Dashboard";
-import ThemeContext from "../context/ThemeContext";
+import ThemeProvider from "../context/ThemeProvider";
 
 const interTight = Inter_Tight({
   variable: "--font-inter-tight",
@@ -20,13 +20,13 @@ export const metadata = {
 
 export default function DashboardLayout({ children }) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en">
       <body
         className={` ${interTight.variable} ${hindSiliguri.variable} font-inter antialiased`}
       >
-        <ThemeContext>
+        <ThemeProvider>
           <Dashboard>{children}</Dashboard>
-        </ThemeContext>
+        </ThemeProvider>
       </body>
     </html>
   );

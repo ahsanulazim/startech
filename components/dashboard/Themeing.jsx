@@ -1,8 +1,20 @@
+"use client";
+import { ThemeContext } from "@/app/context/ThemeProvider";
+import { useContext } from "react";
+
 export default function Themeing() {
+  const { toggleTheme, isDark } = useContext(ThemeContext);
+
   return (
     <label className="swap swap-rotate">
       {/* this hidden checkbox controls the state */}
-      <input type="checkbox" className="theme-controller" value="synthwave" />
+      <input
+        type="checkbox"
+        className="theme-controller"
+        value="synthwave"
+        checked={isDark}
+        onChange={toggleTheme}
+      />
 
       {/* sun icon */}
       <svg
