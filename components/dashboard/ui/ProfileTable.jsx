@@ -31,7 +31,9 @@ export default function ProfileTable({ currentUser }) {
             <td className="flex justify-between gap-5 items-center cursor-pointer">
               <div>
                 <label className="font-semibold text-base">Phone</label>
-                <p className="opacity-50">+880165435464</p>
+                <p className="opacity-50">
+                  {currentUser?.phone ? currentUser.phone : "Not Set"}
+                </p>
               </div>
               <FaChevronRight />
             </td>

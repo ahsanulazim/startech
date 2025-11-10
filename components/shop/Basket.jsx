@@ -2,7 +2,7 @@
 
 import React from "react";
 import { FaShoppingBasket } from "react-icons/fa";
-import { SiteContext } from "@/app/context/MyContext";
+import { SiteContext } from "@/context/MyContext";
 import { useContext } from "react";
 
 export default function Basket({ className, indicator }) {

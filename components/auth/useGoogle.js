@@ -1,4 +1,4 @@
-import { SiteContext } from "@/app/context/MyContext";
+import { SiteContext } from "@/context/MyContext";
 import { auth, google } from "@/firebase/firebase";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { useRouter } from "next/navigation";
@@ -31,7 +31,9 @@ export default function useGoogle() {
                   google: true,
                 }),
               });
-              return await fetch(`${serverUrl}/users/email/${email}`).then((r) => r.json());
+              return await fetch(`${serverUrl}/users/email/${email}`).then(
+                (r) => r.json()
+              );
             } else {
               return res.json();
             }

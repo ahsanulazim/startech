@@ -4,7 +4,7 @@ import { useContext } from "react";
 import ProductCard from "../shop/ProductCard";
 import Section from "../ui/Section";
 import Title from "../ui/Title";
-import { SiteContext } from "@/app/context/MyContext";
+import { SiteContext } from "@/context/MyContext";
 
 export default function FrdProducts() {
   const { products } = useContext(SiteContext);

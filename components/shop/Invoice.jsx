@@ -1,6 +1,6 @@
 "use client";
 
-import { SiteContext } from "@/app/context/MyContext";
+import { SiteContext } from "@/context/MyContext";
 import Link from "next/link";
 import { useContext } from "react";
 import { FaTrash } from "react-icons/fa6";
@@ -64,9 +64,10 @@ export default function Invoice() {
                 </div>
               </td>
               <td className="max-sm:hidden">{product.price}</td>
-              <td>{Number.isInteger(product.price * product.quantity)
-                ? product.price * product.quantity
-                : (product.price * product.quantity).toFixed(2)}
+              <td>
+                {Number.isInteger(product.price * product.quantity)
+                  ? product.price * product.quantity
+                  : (product.price * product.quantity).toFixed(2)}
               </td>
             </tr>
           ))}

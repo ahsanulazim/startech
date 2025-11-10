@@ -1,6 +1,6 @@
 "use client";
 
-import { SiteContext } from "@/app/context/MyContext";
+import { SiteContext } from "@/context/MyContext";
 import { auth } from "@/firebase/firebase";
 import { signOut } from "firebase/auth";
 import Link from "next/link";
@@ -10,8 +10,6 @@ import { FaRightFromBracket, FaSliders, FaUser } from "react-icons/fa6";
 
 export default function ProfileDropdown() {
   const { currentUser } = useContext(SiteContext);
-
-  console.log(currentUser);
 
   const router = useRouter();
 
@@ -28,7 +26,7 @@ export default function ProfileDropdown() {
   return (
     <ul
       tabIndex="-1"
-      className="menu dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+      className="menu dropdown-content bg-base-100 rounded-box z-1 mt-3 w-60 p-2 shadow"
     >
       <li>
         <div className="flex flex-col items-start gap-0">

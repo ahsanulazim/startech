@@ -3,7 +3,7 @@
 import { useContext } from "react";
 import Profile from "./Profile";
 import { FaFireAlt, FaSmile, FaUser } from "react-icons/fa";
-import { SiteContext } from "@/app/context/MyContext";
+import { SiteContext } from "@/context/MyContext";
 
 export default function ImportantLinks() {
   const { currentUser } = useContext(SiteContext);

@@ -1,6 +1,6 @@
 "use client";
 
-import { SiteContext } from "@/app/context/MyContext";
+import { SiteContext } from "@/context/MyContext";
 import OrderConfirm from "@/components/shop/multi-step-form/OrderConfirm";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import Section from "@/components/ui/Section";

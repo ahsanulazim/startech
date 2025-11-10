@@ -1,36 +1,46 @@
-import { Inter_Tight, Hind_Siliguri } from "next/font/google";
-import "../(mainLayout)/globals.css";
+"use client";
 import Dashboard from "@/components/dashboard/Dashboard";
-import ThemeProvider from "../context/ThemeProvider";
-import MyContext from "../context/MyContext";
-
-const interTight = Inter_Tight({
-  variable: "--font-inter-tight",
-  subsets: ["latin"],
-});
-const hindSiliguri = Hind_Siliguri({
-  variable: "--font-hind-siliguri",
-  subsets: ["bengali"],
-  weight: ["400", "500", "700"],
-});
-
-export const metadata = {
-  title: "Star Tech | Dashboard",
-  description: "Manage Orders and Sales",
-};
+import { SiteContext } from "@/context/MyContext";
+import ThemeProvider from "@/context/ThemeProvider";
+import { useRouter } from "next/navigation";
+import { useContext, useEffect, useState } from "react";
+import { BounceLoader } from "react-spinners";
 
 export default function DashboardLayout({ children }) {
+  const { currentUser } = useContext(SiteContext);
+  const router = useRouter();
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // WAIT ONLY IF currentUser === undefined
+    if (currentUser === undefined) {
+      setLoading(true);
+      return;
+    }
+
+    // Now we know currentUser is either real user or null
+    setLoading(false);
+
+    if (currentUser === null) {
+      router.push("/login");
+    }
+  }, [currentUser, router]);
+
+  if (loading) {
+    return (
+      <main className="min-h-dvh flex justify-center items-center">
+        <BounceLoader color="#3749bb" />
+      </main>
+    );
+  }
+
+  if (!currentUser) {
+    return null;
+  }
+
   return (
-    <html lang="en">
-      <body
-        className={` ${interTight.variable} ${hindSiliguri.variable} font-inter antialiased`}
-      >
-        <MyContext>
-          <ThemeProvider>
-            <Dashboard>{children}</Dashboard>
-          </ThemeProvider>
-        </MyContext>
-      </body>
-    </html>
+    <ThemeProvider>
+      <Dashboard>{children}</Dashboard>
+    </ThemeProvider>
   );
 }

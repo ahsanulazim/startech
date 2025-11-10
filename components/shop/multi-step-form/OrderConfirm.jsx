@@ -5,7 +5,7 @@ import { Activity, useContext, useState } from "react";
 import Payment from "./Payment";
 import Thanks from "./Thanks";
 import Link from "next/link";
-import { SiteContext } from "@/app/context/MyContext";
+import { SiteContext } from "@/context/MyContext";
 import Steps from "./Steps";
 
 export default function OrderConfirm() {

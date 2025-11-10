@@ -1,5 +1,5 @@
 "use client";
-import { SiteContext } from "@/app/context/MyContext";
+import { SiteContext } from "@/context/MyContext";
 import { useContext } from "react";
 
 export default function Buy({ pid, className }) {

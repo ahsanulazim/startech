@@ -4,7 +4,7 @@ import Invoice from "@/components/shop/Invoice";
 import Link from "next/link";
 import { useContext } from "react";
 import Summary from "@/components/shop/Summary";
-import { SiteContext } from "@/app/context/MyContext";
+import { SiteContext } from "@/context/MyContext";
 
 export default function CartOverview() {
   const { cartedProducts, total } = useContext(SiteContext);

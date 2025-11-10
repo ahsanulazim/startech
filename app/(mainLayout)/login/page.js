@@ -5,10 +5,9 @@ import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import Section from "@/components/ui/Section";
 import { useContext, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { SiteContext } from "@/app/context/MyContext";
+import { SiteContext } from "@/context/MyContext";
 
 export default function Login() {
-
   const router = useRouter();
   const [loading, setLoading] = useState(true);
   const { currentUser } = useContext(SiteContext);
@@ -25,7 +24,6 @@ export default function Login() {
   if (loading) {
     return null;
   }
-
 
   return (
     <main className="bg-base-300">

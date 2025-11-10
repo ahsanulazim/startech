@@ -1,5 +1,5 @@
 "use client";
-import { ThemeContext } from "@/app/context/ThemeProvider";
+import { ThemeContext } from "@/context/ThemeProvider";
 import { useContext } from "react";
 
 export default function Themeing() {

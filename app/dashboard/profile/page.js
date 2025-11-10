@@ -1,7 +1,8 @@
 "use client";
-import { SiteContext } from "@/app/context/MyContext";
+
 import DashTitle from "@/components/dashboard/ui/DashTitle";
 import ProfileTable from "@/components/dashboard/ui/ProfileTable";
+import { SiteContext } from "@/context/MyContext";
 import { useContext } from "react";
 
 export default function Profile() {

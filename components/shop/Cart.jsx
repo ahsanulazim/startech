@@ -1,6 +1,6 @@
 "use client";
 
-import { SiteContext } from "@/app/context/MyContext";
+import { SiteContext } from "@/context/MyContext";
 import Link from "next/link";
 import { useContext } from "react";
 import { FaTrash, FaXmark } from "react-icons/fa6";
