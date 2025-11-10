@@ -1,11 +1,11 @@
 "use client";
 
+import { SiteContext } from "@/app/context/MyContext";
 import UserForm from "@/components/auth/UserForm";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import Section from "@/components/ui/Section";
 import { useRouter } from "next/navigation";
 import { useContext, useEffect, useState } from "react";
-import { SiteContext } from "../context/MyContext";
 
 export default function Register() {
   const [loading, setLoading] = useState(true);
