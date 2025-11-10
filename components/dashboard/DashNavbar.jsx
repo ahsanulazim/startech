@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Themeing from "./Themeing";
 import ProfileDropdown from "./ProfileDropdown";
+import { FaUser } from "react-icons/fa6";
 
 export default function DashNavbar() {
   return (
@@ -70,13 +71,10 @@ export default function DashNavbar() {
           <div
             tabIndex={0}
             role="button"
-            className="btn btn-ghost btn-circle avatar"
+            className="btn btn-circle avatar avatar-placeholder"
           >
-            <div className="w-10 rounded-full">
-              <img
-                alt="Tailwind CSS Navbar component"
-                src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
-              />
+            <div className=" w-12 rounded-full">
+              <FaUser />
             </div>
           </div>
           <ProfileDropdown />
