@@ -21,11 +21,12 @@ export const metadata = {
   title: "Star Tech",
   description: "Leading Computer, Laptop and Gadget shop in Bangladesh",
   icons: { icon: "/startech.svg" },
+  themeColor: "hsl(206, 61%, 8%)",
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" data-theme="light">
       <body
         className={` ${interTight.variable} ${hindSiliguri.variable} font-inter antialiased`}
       >
