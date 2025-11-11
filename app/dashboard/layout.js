@@ -1,13 +1,13 @@
 "use client";
 import Dashboard from "@/components/dashboard/Dashboard";
-import { SiteContext } from "@/context/MyContext";
+import { AuthContext } from "@/context/AuthProvider";
 import ThemeProvider from "@/context/ThemeProvider";
 import { useRouter } from "next/navigation";
 import { useContext, useEffect, useState } from "react";
 import { BounceLoader } from "react-spinners";
 
 export default function DashboardLayout({ children }) {
-  const { currentUser } = useContext(SiteContext);
+  const { currentUser } = useContext(AuthContext);
   const router = useRouter();
   const [loading, setLoading] = useState(true);
 
@@ -37,6 +37,9 @@ export default function DashboardLayout({ children }) {
   if (!currentUser) {
     return null;
   }
+
+  console.log(currentUser);
+
 
   return (
     <ThemeProvider>

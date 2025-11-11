@@ -1,4 +1,4 @@
-import { SiteContext } from "@/context/MyContext";
+import { AuthContext } from "@/context/AuthProvider";
 import { auth } from "@/firebase/firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useRouter } from "next/navigation";
@@ -6,7 +6,7 @@ import { useContext } from "react";
 
 export default function useRegister() {
   const router = useRouter();
-  const { serverUrl } = useContext(SiteContext);
+  const { serverUrl } = useContext(AuthContext);
 
   const userRegister = async (
     name,
@@ -21,39 +21,30 @@ export default function useRegister() {
     if (!emailRes.ok) {
       const phoneRes = await fetch(`${serverUrl}/users/phone/${phone}`);
       if (!phoneRes.ok) {
-        fetch(`${serverUrl}/users`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ name, email, phone, google }),
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            if (data.success) {
-              // Send data to Firebase
-              createUserWithEmailAndPassword(auth, email, password)
-                .then(() => {
-                  // Signed up
-                  setLoading(false);
-                  router.push("/dashboard");
-
-                  // ...
-                })
-                .catch((error) => {
-                  setLoading(false);
-                  const errorMessage = error.message;
-                  // ..
-                  console.log(errorMessage);
-                });
-            } else {
-              setLoading(false);
-              alert("Failed to add user");
-            }
+        createUserWithEmailAndPassword(auth, email, password)
+          .then((userCredential) => {
+            const userToken = userCredential.user.accessToken;
+            // Signed up
+            fetch(`${serverUrl}/users`, {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ name, email, phone, google, userToken }),
+            })
+              .then((res) => res.json())
+              .then(() => {
+                setLoading(false);
+                router.push("/dashboard");
+              })
+            // ...
           })
-          .catch(() => {
+          .catch((error) => {
             setLoading(false);
-            alert("Server error");
+            const errorMessage = error.message;
+            // ..
+            console.log(errorMessage);
           });
-      } else {
+      }
+      else {
         setLoading(false);
         alert("Use Different Phone Number");
       }

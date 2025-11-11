@@ -1,6 +1,6 @@
 "use client";
 
-import { SiteContext } from "@/context/MyContext";
+import { AuthContext } from "@/context/AuthProvider";
 import { auth } from "@/firebase/firebase";
 import { signOut } from "firebase/auth";
 import Link from "next/link";
@@ -9,7 +9,7 @@ import { useContext } from "react";
 import { FaRightFromBracket, FaSliders, FaUser } from "react-icons/fa6";
 
 export default function ProfileDropdown() {
-  const { currentUser } = useContext(SiteContext);
+  const { currentUser } = useContext(AuthContext);
 
   const router = useRouter();
 

@@ -5,12 +5,12 @@ import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import Section from "@/components/ui/Section";
 import { useContext, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { SiteContext } from "@/context/MyContext";
+import { AuthContext } from "@/context/AuthProvider";
 
 export default function Login() {
   const router = useRouter();
   const [loading, setLoading] = useState(true);
-  const { currentUser } = useContext(SiteContext);
+  const { currentUser } = useContext(AuthContext);
 
   useEffect(() => {
     if (currentUser === undefined) return; // still loading context

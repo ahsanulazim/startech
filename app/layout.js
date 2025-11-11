@@ -1,6 +1,7 @@
 import { Inter_Tight, Hind_Siliguri } from "next/font/google";
 import "./globals.css";
 import MyContext from "@/context/MyContext";
+import AuthProvider from "@/context/AuthProvider";
 
 const interTight = Inter_Tight({
   variable: "--font-inter-tight",
@@ -15,9 +16,12 @@ const hindSiliguri = Hind_Siliguri({
 export const metadata = {
   title: "Star Tech",
   description: "Leading Computer, Laptop and Gadget shop in Bangladesh",
-  icons: { icon: "/startech.svg" },
-  themeColor: "hsl(206, 61%, 8%)",
+  icons: { icon: "/startech.svg" }
 };
+
+export const viewport = {
+  themeColor: "hsl(232, 54%, 36%)",
+}
 
 export default function RootLayout({ children }) {
   return (
@@ -25,7 +29,11 @@ export default function RootLayout({ children }) {
       <body
         className={` ${interTight.variable} ${hindSiliguri.variable} font-inter antialiased`}
       >
-        <MyContext>{children}</MyContext>
+        <MyContext>
+          <AuthProvider>
+            {children}
+          </AuthProvider>
+        </MyContext>
       </body>
     </html>
   );

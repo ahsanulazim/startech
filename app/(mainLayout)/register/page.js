@@ -1,16 +1,16 @@
 "use client";
 
-import { SiteContext } from "@/context/MyContext";
 import UserForm from "@/components/auth/UserForm";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import Section from "@/components/ui/Section";
 import { useRouter } from "next/navigation";
 import { useContext, useEffect, useState } from "react";
+import { AuthContext } from "@/context/AuthProvider";
 
 export default function Register() {
   const [loading, setLoading] = useState(true);
   const router = useRouter();
-  const { currentUser } = useContext(SiteContext);
+  const { currentUser } = useContext(AuthContext);
 
   useEffect(() => {
     if (currentUser === undefined) return; // still loading context
