@@ -38,8 +38,6 @@ export default function DashboardLayout({ children }) {
     return null;
   }
 
-  console.log(currentUser);
-
 
   return (
     <ThemeProvider>

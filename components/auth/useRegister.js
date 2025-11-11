@@ -23,8 +23,8 @@ export default function useRegister() {
       if (!phoneRes.ok) {
         createUserWithEmailAndPassword(auth, email, password)
           .then((userCredential) => {
-            const userToken = userCredential.user.accessToken;
             // Signed up
+            const userToken = userCredential.user.accessToken;
             fetch(`${serverUrl}/users`, {
               method: "POST",
               headers: { "Content-Type": "application/json" },
@@ -32,6 +32,7 @@ export default function useRegister() {
             })
               .then((res) => res.json())
               .then(() => {
+                document.cookie = `authToken=${userToken}; path=/`;
                 setLoading(false);
                 router.push("/dashboard");
               })

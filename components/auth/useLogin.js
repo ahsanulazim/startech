@@ -1,4 +1,4 @@
-import { SiteContext } from "@/context/MyContext";
+import { AuthContext } from "@/context/AuthProvider";
 import { auth } from "@/firebase/firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useRouter } from "next/navigation";
@@ -6,7 +6,7 @@ import { useContext, useState } from "react";
 
 export default function useLogin() {
   const [errorMassage, setErrorMassage] = useState("");
-  const { serverUrl, setCurrentUser } = useContext(SiteContext);
+  const { serverUrl } = useContext(AuthContext);
   const router = useRouter();
 
   const userLogin = async (email, password, setLoading, setError) => {
@@ -29,9 +29,11 @@ export default function useLogin() {
         } else {
           setError(false);
           signInWithEmailAndPassword(auth, email, password)
-            .then(() => {
-              setLoading(false);
+            .then((userCredential) => {
               // Signed in
+              const userToken = userCredential.user.accessToken;
+              document.cookie = `authToken=${userToken}; path=/`;
+              setLoading(false);
               router.push("/dashboard");
               // ...
             })
