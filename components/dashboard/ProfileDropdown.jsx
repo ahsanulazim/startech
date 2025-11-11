@@ -39,7 +39,7 @@ export default function ProfileDropdown() {
         <Link href="/dashboard/profile" className="">
           <FaUser />
           Profile
-          <span className="badge bg-second text-white">New</span>
+          <span className="badge badge-sm bg-second text-white">New</span>
         </Link>
       </li>
       <li>

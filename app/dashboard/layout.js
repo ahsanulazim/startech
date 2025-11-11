@@ -1,5 +1,6 @@
 "use client";
 import Dashboard from "@/components/dashboard/Dashboard";
+import DashSkeleton from "@/components/dashboard/skeleton/DashSkeleton";
 import { AuthContext } from "@/context/AuthProvider";
 import ThemeProvider from "@/context/ThemeProvider";
 import { useRouter } from "next/navigation";
@@ -28,9 +29,7 @@ export default function DashboardLayout({ children }) {
 
   if (loading) {
     return (
-      <main className="min-h-dvh flex justify-center items-center">
-        <BounceLoader color="#3749bb" />
-      </main>
+      <DashSkeleton />
     );
   }
 

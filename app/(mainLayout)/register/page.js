@@ -6,6 +6,7 @@ import Section from "@/components/ui/Section";
 import { useRouter } from "next/navigation";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "@/context/AuthProvider";
+import { BarLoader } from "react-spinners";
 
 export default function Register() {
   const [loading, setLoading] = useState(true);
@@ -22,7 +23,9 @@ export default function Register() {
   }, [currentUser, router]);
 
   if (loading) {
-    return null;
+    return <main className="min-h-dvh bg-base-100 flex items-center justify-center">
+      <BarLoader />
+    </main>;
   }
 
   if (!currentUser) {
