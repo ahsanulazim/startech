@@ -5,7 +5,6 @@ import { AuthContext } from "@/context/AuthProvider";
 import ThemeProvider from "@/context/ThemeProvider";
 import { useRouter } from "next/navigation";
 import { useContext, useEffect, useState } from "react";
-import { BounceLoader } from "react-spinners";
 
 export default function DashboardLayout({ children }) {
   const { currentUser } = useContext(AuthContext);

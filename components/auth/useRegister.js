@@ -6,7 +6,7 @@ import { useContext } from "react";
 
 export default function useRegister() {
   const router = useRouter();
-  const { serverUrl } = useContext(AuthContext);
+  const { serverUrl, setCurrentUser } = useContext(AuthContext);
 
   const userRegister = async (
     name,
@@ -25,6 +25,7 @@ export default function useRegister() {
           .then((userCredential) => {
             // Signed up
             const userToken = userCredential.user.accessToken;
+            document.cookie = `authToken=${userToken};path=/;httpOnly`;
             fetch(`${serverUrl}/users`, {
               method: "POST",
               headers: { "Content-Type": "application/json" },
@@ -32,7 +33,6 @@ export default function useRegister() {
             })
               .then((res) => res.json())
               .then(() => {
-                document.cookie = `authToken=${userToken}; path=/`;
                 setLoading(false);
                 router.push("/dashboard");
               })

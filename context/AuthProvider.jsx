@@ -35,12 +35,14 @@ export default function AuthProvider({ children }) {
                     })
                     .catch((err) => {
                         setCurrentUser(null);
+                        localStorage.removeItem("user");
                     });
                 // ...
             } else {
                 // User is signed out
                 // ...
                 setCurrentUser(null);
+                localStorage.removeItem("user");
             }
             // setLoading(false);
         });
@@ -49,7 +51,8 @@ export default function AuthProvider({ children }) {
 
     const userData = {
         currentUser,
-        serverUrl
+        serverUrl,
+        setCurrentUser
     }
 
     return (
