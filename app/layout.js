@@ -20,7 +20,10 @@ export const metadata = {
 };
 
 export const viewport = {
-  themeColor: "hsl(232, 54%, 36%)",
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: "hsl(206, 61%, 8%)" },
+    { media: '(prefers-color-scheme: dark)', color: "hsl(206, 61%, 8%)" },
+  ],
 }
 
 export default function RootLayout({ children }) {
