@@ -1,5 +1,5 @@
 import { AuthContext } from "@/context/AuthProvider";
-import { auth } from "@/firebase/firebase";
+import { auth } from "@/lib/firebase/firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useRouter } from "next/navigation";
 import { useContext, useState } from "react";

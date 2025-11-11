@@ -15,7 +15,8 @@ export default function NotFound() {
           height={600}
           src="/not-found.svg"
           alt="not found"
-          className="max-w-md mx-auto"
+          loading="eager"
+          className="max-w-md w-full mx-auto"
         />
       </Section>
       <Section className="text-center">

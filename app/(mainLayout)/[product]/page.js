@@ -5,7 +5,7 @@ import Section from "@/components/ui/Section";
 import { notFound } from "next/navigation";
 
 export default async function page({ params }) {
-  const { product } = params;
+  const { product } = await params;
 
   try {
     const res = await fetch(`https://fakestoreapi.com/products/${product}`);

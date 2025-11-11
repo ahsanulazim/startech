@@ -1,5 +1,5 @@
 import { AuthContext } from "@/context/AuthProvider";
-import { auth, google } from "@/firebase/firebase";
+import { auth, google } from "@/lib/firebase/firebase";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { useRouter } from "next/navigation";
 import { useContext } from "react";

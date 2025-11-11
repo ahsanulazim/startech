@@ -1,20 +1,28 @@
 import { NextResponse } from "next/server";
 
+const session_cookie = '__session';
+
 export function middleware(req) {
 
-    const token = req.cookies.get("authToken")?.value
-    const path = req.nextUrl.pathname;
-    const isAuthPage = ['/login', '/register'].includes(path);
-    const isDashboard = path.startsWith('/dashboard');
+    const { pathname } = req.nextUrl;
+    const hasSession = req.cookies.get(session_cookie);
 
-    if (!token && isDashboard) {
-        return NextResponse.redirect(new URL('/login', req.url));
-    }
-    if (token && isAuthPage) {
-        return NextResponse.redirect(new URL('/dashboard', req.url));
+    const isAuthPage = pathname.startsWith('/login') || pathname.startsWith('/register');
+    const isProtected = pathname.startsWith('/dashboard');
+
+    if (isAuthPage && hasSession) {
+        const url = req.nextUrl.clone();
+        url.pathname = '/dashboard';
+        return NextResponse.redirect(url);
     }
 
-    return NextResponse.next()
+    if (isProtected && !hasSession) {
+        const url = req.nextUrl.clone();
+        url.pathname = '/login';
+        return NextResponse.redirect(url);
+    }
+
+    return NextResponse.next();
 }
 
 export const config = {

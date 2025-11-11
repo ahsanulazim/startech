@@ -1,59 +1,31 @@
 import { AuthContext } from "@/context/AuthProvider";
-import { auth } from "@/firebase/firebase";
+import { apiGet, apiPost } from "@/lib/api/api";
+import { auth } from "@/lib/firebase/firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useRouter } from "next/navigation";
 import { useContext } from "react";
 
 export default function useRegister() {
   const router = useRouter();
-  const { serverUrl, setCurrentUser } = useContext(AuthContext);
+  const userRegister = async (name, email, phone, google, password, setLoading) => {
+    try {
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const accessToken = await userCredential.user.getIdToken();
 
-  const userRegister = async (
-    name,
-    email,
-    phone,
-    google,
-    password,
-    setLoading
-  ) => {
-    const emailRes = await fetch(`${serverUrl}/users/email/${email}`);
-
-    if (!emailRes.ok) {
-      const phoneRes = await fetch(`${serverUrl}/users/phone/${phone}`);
-      if (!phoneRes.ok) {
-        createUserWithEmailAndPassword(auth, email, password)
-          .then((userCredential) => {
-            // Signed up
-            const userToken = userCredential.user.accessToken;
-            document.cookie = `authToken=${userToken};path=/;httpOnly`;
-            fetch(`${serverUrl}/users`, {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({ name, email, phone, google, userToken }),
-            })
-              .then((res) => res.json())
-              .then(() => {
-                setLoading(false);
-                router.push("/dashboard");
-              })
-            // ...
-          })
-          .catch((error) => {
-            setLoading(false);
-            const errorMessage = error.message;
-            // ..
-            console.log(errorMessage);
-          });
-      }
-      else {
+      //save user to mongodb
+      await apiPost('/auth/login', { name, phone, google, accessToken });
+      const status = await apiGet('/auth/status');
+      if (status.authenticated) {
+        // 4. Safe to navigate client-side
         setLoading(false);
-        alert("Use Different Phone Number");
+        router.push('/dashboard');
+      } else {
+        setLoading(false);
+        window.location.href = '/dashboard';
       }
-    } else {
-      setLoading(false);
-      alert("Use another email");
+    } catch (err) {
+      alert(err);
     }
-  };
-
+  }
   return { userRegister };
 }

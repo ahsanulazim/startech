@@ -1,7 +1,7 @@
 "use client";
 
 import { AuthContext } from "@/context/AuthProvider";
-import { auth } from "@/firebase/firebase";
+import { auth } from "@/lib/firebase/firebase";
 import { signOut } from "firebase/auth";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -13,10 +13,13 @@ export default function ProfileDropdown() {
 
   const router = useRouter();
 
-  const handleLogout = () => {
+
+
+  const handleLogout = async () => {
     signOut(auth)
-      .then(() => {
-        router.push("/");
+      .then(async () => {
+        await apiPost('/auth/logout', {});
+        router.push('/login');
       })
       .catch((error) => {
         alert(error);
