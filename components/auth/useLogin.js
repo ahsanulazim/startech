@@ -31,8 +31,6 @@ export default function useLogin() {
           signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
               // Signed in
-              const userToken = userCredential.user.accessToken;
-              document.cookie = `authToken=${userToken};path=/;httpOnly`;
               setLoading(false);
               router.push("/dashboard");
               // ...

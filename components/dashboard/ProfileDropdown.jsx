@@ -10,16 +10,12 @@ import { FaRightFromBracket, FaSliders, FaUser } from "react-icons/fa6";
 
 export default function ProfileDropdown() {
   const { currentUser } = useContext(AuthContext);
-
   const router = useRouter();
-
-
 
   const handleLogout = async () => {
     signOut(auth)
       .then(async () => {
-        await apiPost('/auth/logout', {});
-        router.push('/login');
+        router.push("/login");
       })
       .catch((error) => {
         alert(error);

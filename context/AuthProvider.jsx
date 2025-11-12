@@ -25,31 +25,16 @@ export default function AuthProvider({ children }) {
         const email = user.email;
         const res = await fetch(`${serverUrl}/users/email/${email}`);
         const data = await res.json();
-        console.log(data);
-
-        // fetch(`${serverUrl}/users/email/${email}`)
-        //     .then((res) => res.json())
-        //     .then((data) => {
-        //         setCurrentUser(data);
-        //         localStorage.setItem("user", JSON.stringify(data));
-        //     })
-        //     .catch((err) => {
-        //         setCurrentUser(null);
-        //         localStorage.removeItem("user");
-        //     });
-        // ...
+        setCurrentUser(data);
+        localStorage.setItem("user", JSON.stringify(data));
       } else {
-        alert("cannot get user");
-
-        // User is signed out
-        // ...
-        // setCurrentUser(null);
-        // localStorage.removeItem("user");
+        setCurrentUser(null);
+        localStorage.removeItem("user");
       }
       // setLoading(false);
     });
     return () => observer();
-  }, []);
+  }, [currentUser]);
 
   const userData = {
     currentUser,

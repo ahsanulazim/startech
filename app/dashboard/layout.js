@@ -1,30 +1,17 @@
 "use client";
 import Dashboard from "@/components/dashboard/Dashboard";
+import { AuthContext } from "@/context/AuthProvider";
 import ThemeProvider from "@/context/ThemeProvider";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 
 export default function DashboardLayout({ children }) {
-
+  const { currentUser } = useContext(AuthContext);
   const router = useRouter();
-  const [user, setUser] = useState(null);
-  const [data, setData] = useState(null);
 
   useEffect(() => {
-    let mounted = true;
-    (async () => {
-      try {
-        const status = await apiGet('/auth/status');
-        if (mounted) setUser(status.user);
-        const dd = await apiGet('/dashboard-data');
-        if (mounted) setData(dd);
-      } catch (err) {
-        // If somehow unauthenticated, send to login
-        router.push('/login');
-      }
-    })();
-    return () => { mounted = false; };
-  }, []);
+    if (!currentUser) return router.push("/login");
+  }, [currentUser, router]);
 
   return (
     <ThemeProvider>

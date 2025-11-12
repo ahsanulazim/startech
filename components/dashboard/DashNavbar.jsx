@@ -37,7 +37,9 @@ export default function DashNavbar() {
           <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
             <div className="indicator">
               <FaRegBell className="size-5" />
-              <span className="badge badge-sm indicator-item">8</span>
+              <span className="badge badge-warning badge-sm indicator-item">
+                8
+              </span>
             </div>
           </div>
           <div

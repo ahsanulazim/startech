@@ -29,7 +29,7 @@ export default function useRegister() {
       const res = await fetch(`${serverUrl}/users`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, phone, google, userID }),
+        body: JSON.stringify({ name, phone, google, userID, email }),
       });
       const data = await res.json();
       setLoading(false);
