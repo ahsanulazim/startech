@@ -25,11 +25,19 @@ export default function useRegister() {
       );
       const user = userCredential.user;
       const userID = user.uid;
+      const emailVerified = user.emailVerified;
       //Backend User Data Transfer
       const res = await fetch(`${serverUrl}/users`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, phone, google, userID, email }),
+        body: JSON.stringify({
+          name,
+          phone,
+          google,
+          userID,
+          email,
+          emailVerified,
+        }),
       });
       const data = await res.json();
       setLoading(false);

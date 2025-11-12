@@ -2,8 +2,13 @@ import { FaUser } from "react-icons/fa6";
 import DashNavbar from "./DashNavbar";
 import Link from "next/link";
 import { MdDashboard } from "react-icons/md";
+import DashAlert from "./ui/DashAlert";
+import { useContext } from "react";
+import { AuthContext } from "@/context/AuthProvider";
 
 export default function Dashboard({ children }) {
+  const { currentUser } = useContext(AuthContext);
+
   return (
     <div className="drawer lg:drawer-open" id="dashboard">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -11,6 +16,7 @@ export default function Dashboard({ children }) {
         {/* Navbar */}
         <DashNavbar />
         {/* Page content here */}
+        {!currentUser?.emailVerified && <DashAlert />}
         {children}
       </div>
       <div className="drawer-side is-drawer-close:overflow-visible">

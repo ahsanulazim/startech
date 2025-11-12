@@ -9,17 +9,20 @@ import { useContext } from "react";
 import { FaRightFromBracket, FaSliders, FaUser } from "react-icons/fa6";
 
 export default function ProfileDropdown() {
-  const { currentUser } = useContext(AuthContext);
+  const { currentUser, setCurrentUser, setLoading } = useContext(AuthContext);
   const router = useRouter();
 
   const handleLogout = async () => {
-    signOut(auth)
-      .then(async () => {
-        router.push("/login");
-      })
-      .catch((error) => {
-        alert(error);
-      });
+    setLoading(true); // ✅ show loading UI
+
+    try {
+      await signOut(auth);
+      router.push("/login");
+    } catch (error) {
+      alert("Logout failed: " + error.message);
+    } finally {
+      setLoading(false); // ✅ reset after redirect
+    }
   };
 
   return (

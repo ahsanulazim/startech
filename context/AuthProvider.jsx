@@ -8,6 +8,7 @@ export const AuthContext = createContext();
 export default function AuthProvider({ children }) {
   const serverUrl = process.env.NEXT_PUBLIC_API_BASE;
   const [currentUser, setCurrentUser] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   // Monitor auth state
   useEffect(() => {
@@ -31,15 +32,17 @@ export default function AuthProvider({ children }) {
         setCurrentUser(null);
         localStorage.removeItem("user");
       }
-      // setLoading(false);
+      setLoading(false);
     });
     return () => observer();
-  }, [currentUser]);
+  }, []);
 
   const userData = {
     currentUser,
     serverUrl,
     setCurrentUser,
+    loading,
+    setLoading,
   };
 
   return <AuthContext value={userData}>{children}</AuthContext>;
