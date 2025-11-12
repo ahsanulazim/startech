@@ -5,7 +5,7 @@ import { MdDashboard } from "react-icons/md";
 
 export default function Dashboard({ children }) {
   return (
-    <div className="drawer lg:drawer-open">
+    <div className="drawer lg:drawer-open" id="dashboard">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content flex flex-col">
         {/* Navbar */}

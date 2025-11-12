@@ -2,11 +2,11 @@
 
 import DashTitle from "@/components/dashboard/ui/DashTitle";
 import ProfileTable from "@/components/dashboard/ui/ProfileTable";
-import { SiteContext } from "@/context/MyContext";
+import { AuthContext } from "@/context/AuthProvider";
 import { useContext } from "react";
 
 export default function Profile() {
-  const { currentUser } = useContext(SiteContext);
+  const { currentUser } = useContext(AuthContext);
 
   return (
     <main className="bg-base-300 flex-1 p-5">

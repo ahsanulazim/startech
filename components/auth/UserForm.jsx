@@ -158,7 +158,13 @@ export default function UserForm({ login }) {
           </div>
         </Activity>
 
-        <button type="submit" className="btn btn-neutral btn-filled-style mt-4">
+        <button
+          type="submit"
+          className={`btn btn-neutral ${
+            loading ? "" : "btn-filled-style"
+          } mt-4`}
+          disabled={loading}
+        >
           {login ? (
             loading ? (
               <>

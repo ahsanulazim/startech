@@ -19,12 +19,13 @@ export default function ThemeProvider({ children }) {
 
   useEffect(() => {
     localStorage.setItem("isDark", isDark);
+    const dashboard = document.getElementById("dashboard");
     if (isDark) {
-      document.documentElement.classList.add("dark");
-      document.documentElement.setAttribute("data-theme", "dark");
+      dashboard.classList.add("dark");
+      dashboard.setAttribute("data-theme", "dark");
     } else {
-      document.documentElement.classList.remove("dark");
-      document.documentElement.setAttribute("data-theme", "light");
+      dashboard.classList.remove("dark");
+      dashboard.setAttribute("data-theme", "light");
     }
   }, [isDark]);
 
