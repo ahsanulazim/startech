@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export default function ComparisonCard({ selectedIds }) {
@@ -25,16 +26,18 @@ export default function ComparisonCard({ selectedIds }) {
         {products ? (
           products.map((p) => (
             <div key={p.id} className="flex-1">
-              <figure className="bg-base-300 aspect-square p-5 flex place-content-center rounded-lg">
-                <img
-                  src={p.image}
-                  alt={p.title}
-                  className="w-full object-contain"
-                />
-              </figure>
-              <h3 className="text-xs xs:text-sm w-full line-clamp-1">
-                {p.title}
-              </h3>
+              <Link href={`/${p.id}`}>
+                <figure className="bg-base-300 aspect-square p-5 flex place-content-center rounded-lg">
+                  <img
+                    src={p.image}
+                    alt={p.title}
+                    className="w-full object-contain"
+                  />
+                </figure>
+                <h3 className="text-xs xs:text-sm w-full line-clamp-1">
+                  {p.title}
+                </h3>
+              </Link>
               <p className="text-accent font-bold max-xs:text-sm text-center mt-5">
                 <span lang="bn">৳</span>
                 {p.price}

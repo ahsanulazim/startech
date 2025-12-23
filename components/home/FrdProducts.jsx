@@ -1,13 +1,19 @@
-"use client";
+'use client'
 
-import { useContext } from "react";
+import { useQuery } from "@tanstack/react-query";
 import ProductCard from "../shop/ProductCard";
 import Section from "../ui/Section";
 import Title from "../ui/Title";
-import { SiteContext } from "@/context/MyContext";
 
 export default function FrdProducts() {
-  const { products } = useContext(SiteContext);
+
+  const { data: products, isLoading } = useQuery({
+    queryKey: ["featured-products"],
+    queryFn: async () => {
+      const res = await fetch("https://fakestoreapi.com/products");
+      return res.json();
+    }
+  })
 
   const t = {
     heading: "Featured Products",

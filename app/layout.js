@@ -2,6 +2,7 @@ import { Inter_Tight, Hind_Siliguri } from "next/font/google";
 import "./globals.css";
 import MyContext from "@/context/MyContext";
 import AuthProvider from "@/context/AuthProvider";
+import QueryProvider from "@/query/QueryProvider";
 
 const interTight = Inter_Tight({
   variable: "--font-inter-tight",
@@ -32,11 +33,13 @@ export default function RootLayout({ children }) {
       <body
         className={` ${interTight.variable} ${hindSiliguri.variable} font-inter antialiased`}
       >
-        <MyContext>
-          <AuthProvider>
-            {children}
-          </AuthProvider>
-        </MyContext>
+        <QueryProvider>
+          <MyContext>
+            <AuthProvider>
+              {children}
+            </AuthProvider>
+          </MyContext>
+        </QueryProvider>
       </body>
     </html>
   );
