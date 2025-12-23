@@ -8,7 +8,7 @@ export default async function page({ params }) {
   const { product } = await params;
 
   try {
-    const res = await fetch(`https://fakestoreapi.com/products/${product}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_FAKE_STORE_API}/products/${product}`, {
       cache: "no-store",
     });
     if (!res.ok) {
