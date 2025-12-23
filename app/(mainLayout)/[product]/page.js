@@ -8,7 +8,9 @@ export default async function page({ params }) {
   const { product } = await params;
 
   try {
-    const res = await fetch(`https://fakestoreapi.com/products/${product}`);
+    const res = await fetch(`https://fakestoreapi.com/products/${product}`, {
+      cache: "no-store",
+    });
     if (!res.ok) {
       // handle 404 or other errors gracefully
       throw new Error(`Failed to fetch product: ${res.status}`);
